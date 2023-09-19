@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - AnimFollow
+  - GrabCol
   layers:
   - Default
   - TransparentFX
