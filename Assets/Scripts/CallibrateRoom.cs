@@ -1,6 +1,7 @@
 using Oculus.Interaction.OVR.Input;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -28,11 +29,15 @@ public class CallibrateRoom : MonoBehaviour
     enum Mode
     {
         Standby,
-        CalibratingPos
+        CalibratingPos,
+        CalibratingRot
     }
 
     private Mode _mode;
     
+    private float direction = 0.0f;
+    private readonly float rotFactor = 0.01f;
+
     Mode mode
     {
         get { return _mode; }
@@ -53,36 +58,67 @@ public class CallibrateRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(OVRInput.GetUp(OVRInput.RawButton.A) || OVRInput.GetUp(OVRInput.RawButton.X))
+        if (OVRInput.GetActiveController() != OVRInput.Controller.Hands)
         {
-            Debug.Log("A or X was pressed");
-
-            switch (mode)
+            //if the A or X button is pressed
+            if (OVRInput.GetUp(OVRInput.Button.One) || OVRInput.GetUp(OVRInput.Button.Three))
             {
-                case Mode.Standby:
-                    mode = Mode.CalibratingPos;
-                    break;
-                case Mode.CalibratingPos:
-                    mode = Mode.Standby;
-                    break;
-                default:
-                    Debug.Log("CalibrateRoom mode not set");
-                    return;
+                Debug.Log("A or X was pressed");
+
+                switch (mode)
+                {
+                    case Mode.Standby:
+                        mode = Mode.CalibratingPos;
+                        break;
+                    case Mode.CalibratingPos:
+                        mode = Mode.Standby;
+                        break;
+                    default:
+                        Debug.Log("CalibrateRoom mode not set");
+                        return;
+                }
+            }
+            //if the B or Y button is pressed
+            if (OVRInput.GetUp(OVRInput.Button.Two) || OVRInput.GetUp(OVRInput.Button.Four))
+            {
+                switch (mode)
+                {
+                    case Mode.Standby:
+                        mode = Mode.CalibratingRot;
+                        direction = (OVRInput.GetUp(OVRInput.Button.Two)) ? 1 : -1;
+                        break;
+                    case Mode.CalibratingRot:
+                        mode = Mode.Standby;
+                        direction = 0;
+                        break;
+                    default:
+                        Debug.Log("CalibrateRoom mode not set");
+                        return;
+                }
             }
         }
+
+        if(mode == Mode.CalibratingRot)
+            _roomRB.transform.RotateAround(_rotationReference.transform.position, Vector3.up, rotFactor*direction);
     }
 
     private void ModeChanged()
     {
-        if(mode == Mode.Standby)
+        if (mode == Mode.Standby)
         {
             _roomRB.constraints = RigidbodyConstraints.FreezeAll;
             ToggleIgnores(true);
         }
-        else if(mode == Mode.CalibratingPos)
+        else if (mode == Mode.CalibratingPos)
         {
-            _roomRB.constraints = RigidbodyConstraints.FreezeRotation;
             ToggleIgnores(false);
+            _roomRB.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+        else if (mode == Mode.CalibratingRot)
+        {
+            ToggleIgnores(false);
+            //rotate so the forward is parallel to the rotation reference
+            
         }
         else
         {
