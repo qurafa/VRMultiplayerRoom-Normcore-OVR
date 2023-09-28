@@ -7,6 +7,15 @@
       "dependencies": {},
       "hash": "a16435b37d6c9941220cc5d387b2462c23bbb5e9"
     },
+    "com.normalvr.normcore": {
+      "version": "2.5.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.editorcoroutines": "1.0.0"
+      },
+      "url": "https://normcore-registry.normcore.io"
+    },
     "com.unity.collab-proxy": {
       "version": "2.0.4",
       "depth": 0,

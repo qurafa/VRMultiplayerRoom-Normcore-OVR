@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AnimFollow
   - GrabCol
+  - spawn
   layers:
   - Default
   - TransparentFX

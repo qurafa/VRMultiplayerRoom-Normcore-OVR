@@ -36,7 +36,7 @@ public class CallibrateRoom : MonoBehaviour
     private Mode _mode;
     
     private float direction = 0.0f;
-    private readonly float rotFactor = 0.01f;
+    private readonly float rotFactor = 0.05f;
 
     Mode mode
     {
@@ -73,6 +73,9 @@ public class CallibrateRoom : MonoBehaviour
                     case Mode.CalibratingPos:
                         mode = Mode.Standby;
                         break;
+                    case Mode.CalibratingRot:
+                        mode = Mode.Standby;
+                        break;
                     default:
                         Debug.Log("CalibrateRoom mode not set");
                         return;
@@ -86,6 +89,10 @@ public class CallibrateRoom : MonoBehaviour
                     case Mode.Standby:
                         mode = Mode.CalibratingRot;
                         direction = (OVRInput.GetUp(OVRInput.Button.Two)) ? 1 : -1;
+                        break;
+                    case Mode.CalibratingPos:
+                        mode = Mode.Standby;
+                        direction = 0;
                         break;
                     case Mode.CalibratingRot:
                         mode = Mode.Standby;
