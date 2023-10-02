@@ -191,16 +191,17 @@ public class SpeakGeekOculusQuestHand : MonoBehaviour
             }
 
             //Don't send TrackedData if we are the editor.
-            if (!Application.isEditor)
-            {
+            //if (!Application.isEditor)
+            //{
                 if (rtView != null)
                 {
                     if (rtView.isOwnedLocally)
                     {
+                        Debug.Log(dataToSend);
                         _SGHandSync.SetTrackedData(dataToSend);
                     }
                 }
-            }
+            //}
         }
     }
 
