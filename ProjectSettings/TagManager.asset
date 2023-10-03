@@ -7,6 +7,8 @@ TagManager:
   - AnimFollow
   - GrabCol
   - spawn
+  - l_slave
+  - r_slave
   layers:
   - Default
   - TransparentFX

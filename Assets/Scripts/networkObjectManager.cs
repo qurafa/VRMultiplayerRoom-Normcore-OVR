@@ -9,10 +9,23 @@ Script Description : Enable/Disable Objects Based on Remote/Local Player
 
 using UnityEngine;
 using Normal.Realtime;
+using HandPhysicsToolkit.Modules.Avatar;
 
 public class networkObjectManager : MonoBehaviour
 {
+/*    public Camera[] localCameras;
+
+    public AudioListener localAudioListener;
+
+    public OVRCameraRig localOVRCameraRig;
+
+    public OVRManager localOVRManager;
+
+    public OVRHeadsetEmulator localEmulator;*/
+
     public GameObject[] Hands;
+
+    //public GameObject[] setInactive;
 
     public RealtimeView rtView;
 
@@ -44,6 +57,17 @@ public class networkObjectManager : MonoBehaviour
 
         //IF THIS IS NOT OUR REALTIME VIEW
         if (!rtView.isOwnedLocally) {
+/*            foreach (GameObject g in setInactive)
+                Destroy(g);
+
+            Destroy(localAudioListener);
+            Destroy(localOVRCameraRig);
+            Destroy(localOVRManager);
+            Destroy(localEmulator);
+
+            foreach(Camera cam in localCameras)
+                Destroy(cam);*/
+
             foreach (GameObject hand in Hands)
             {
                 //OVR SKELETON
@@ -58,6 +82,12 @@ public class networkObjectManager : MonoBehaviour
                     Destroy(hand.GetComponent<OVRHand>());
                 }
             }
+
+            foreach(ReprView rV in GetComponentsInChildren<ReprView>())
+                Destroy(rV);
+
+            foreach(ReprModel rM in GetComponentsInChildren<ReprModel>())
+                Destroy(rM);
         }
         else
         {
