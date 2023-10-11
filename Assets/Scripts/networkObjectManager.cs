@@ -56,40 +56,7 @@ public class networkObjectManager : MonoBehaviour
         }
 
         //IF THIS IS NOT OUR REALTIME VIEW
-        if (!rtView.isOwnedLocally) {
-/*            foreach (GameObject g in setInactive)
-                Destroy(g);
-
-            Destroy(localAudioListener);
-            Destroy(localOVRCameraRig);
-            Destroy(localOVRManager);
-            Destroy(localEmulator);
-
-            foreach(Camera cam in localCameras)
-                Destroy(cam);*/
-
-            /*foreach (GameObject hand in Hands)
-            {
-                //OVR SKELETON
-                if (hand.GetComponent<OVRSkeleton>())
-                {
-                    Destroy(hand.GetComponent<OVRSkeleton>());
-                }
-
-                //OVR HAND
-                if (hand.GetComponent<OVRHand>())
-                {
-                    Destroy(hand.GetComponent<OVRHand>());
-                }
-            }*/
-
-            foreach(ReprView rV in GetComponentsInChildren<ReprView>())
-                Destroy(rV);
-
-            foreach(ReprModel rM in GetComponentsInChildren<ReprModel>())
-                Destroy(rM);
-        }
-        else
+        if (rtView.isOwnedLocally)
         {
             //REQUEST OWNERSHIP OF EACH CHILD REALTIMEVIEW
             foreach (RealtimeView childRTView in GetComponentsInChildren<RealtimeView>())

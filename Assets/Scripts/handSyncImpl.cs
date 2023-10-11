@@ -133,7 +133,7 @@ public class handSyncImpl : MonoBehaviour
                     _localBones.Add(fingerTipsLocal[x]);
                     _remoteBones.Add(fingerTipsRemote[x]);
                 }
-                
+                //Debug.Log("Hand Ready, length: " + _remoteBones.Count);
                 break;
             }
         }
@@ -185,73 +185,62 @@ public class handSyncImpl : MonoBehaviour
             //We check oculus data confidence
             //if (data.IsDataValid && data.IsDataHighConfidence)
             //{
-                _mySkinMeshRenderer.enabled = true;
+        _mySkinMeshRenderer.enabled = true;
 
-                dataToSend += "1|";
+        dataToSend += "1|";
 
-                //Replicates oculus root pose handling, should match oculus OVRSkeleton
-                if (_updateRootPose)
-                {
-                    //Vector3 p = _localRoot.position.FromFlippedZVector3f();
-                    //_remoteRoot.localRotation = data.RootPose.Orientation.FromFlippedZQuatf();
+        //Replicates oculus root pose handling, should match oculus OVRSkeleton
+        if (_updateRootPose)
+        {
+            //Vector3 p = _localRoot.position.FromFlippedZVector3f();
+            //_remoteRoot.localRotation = data.RootPose.Orientation.FromFlippedZQuatf();
 
-                    dataToSend += "1|";
-                    dataToSend += _localRoot.position.x + "|" + _localRoot.position.y + "|" + _localRoot.position.z + "|";
-                    dataToSend += _localRoot.rotation.x + "|" + _localRoot.rotation.y + "|" + _localRoot.rotation.z + "|" + _localRoot.rotation.w + "|";
-                }
-                else
-                {
-                    dataToSend += "0|";
-                    dataToSend += "0|0|0|";
-                    dataToSend += "0|0|0|";
-                }
+            dataToSend += "1|";
+            Vector3 pos = _localRoot.position;//FromFlippedZVector3f(_localRoot.position);
+            Vector3 rot = _localRoot.eulerAngles;//FromFlippedZQuatf(_localRoot.rotation).eulerAngles;
 
-                //Replicates oculus root scale handling, should match oculus OVRSkeleton
-                if (_updateRootScale)
-                {
-                    /*transform.localScale = new Vector3(data.RootScale, data.RootScale, data.RootScale);*/
+            dataToSend += pos.x + "|" + pos.y + "|" + pos.z + "|";
+            dataToSend += rot.x + "|" + rot.y + "|" + rot.z + "|";
+        }
+        else
+        {
+            dataToSend += "0|";
+            dataToSend += "0|0|0|";
+            dataToSend += "0|0|0|";
+        }
 
-                    dataToSend += "1|";
-                    dataToSend += _localRoot.localScale.x + "|" + _localRoot.localScale.y + "|" + _localRoot.localScale.z + "|";
-                }
-                else
-                {
-                    dataToSend += "0|";
-                    dataToSend += "0|0|0|";
-                }
+        //Replicates oculus root scale handling, should match oculus OVRSkeleton
+        if (_updateRootScale)
+        {
+            /*transform.localScale = new Vector3(data.RootScale, data.RootScale, data.RootScale);*/
 
-                //Set bone transform from SkeletonPoseData
-                for (var i = 0; i < _localBones.Count; ++i)
-                {
-                    //_bones[i].transform.localRotation = data.BoneRotations[i].FromFlippedZQuatf();
-                    //Debug.Log("LocalBones Name Sendng: " + _localBones[i].name);
+            dataToSend += "1|";
+            dataToSend += _localRoot.localScale.x + "|" + _localRoot.localScale.y + "|" + _localRoot.localScale.z + "|";
+        }
+        else
+        {
+            dataToSend += "0|";
+            dataToSend += "0|0|0|";
+        }
 
-                    dataToSend += _localBones[i].position.x + "|" + _localBones[i].position.y + "|" + _localBones[i].position.z + "|";
-                    dataToSend += _localBones[i].rotation.x + "|" + _localBones[i].rotation.y + "|" + _localBones[i].rotation.z + "|" + _localBones[i].rotation.w + "|";
-                }
-            //}
-            //else
-            //{
+        //Set bone transform from SkeletonPoseData
+        for (var i = 0; i < _localBones.Count; ++i)
+        {
+            //_bones[i].transform.localRotation = data.BoneRotations[i].FromFlippedZQuatf();
+            //Debug.Log("LocalBones Name Sendng: " + _localBones[i].name);
+            Vector3 rot = _localBones[i].localEulerAngles;//FromFlippedZQuatf(_localBones[i].localRotation).eulerAngles;
+            dataToSend += rot.x + "|" + rot.y + "|" + rot.z + "|";
+        }
 
-                //If data confidence is low, hide hand
-                //_mySkinMeshRenderer.enabled = false;
-
-                //dataToSend = "0|";
-            //}
-
-            //Don't send TrackedData if we are the editor.
-            //if (!Application.isEditor)
-            //{
-                if (rtView != null)
-                {
-                    if (rtView.isOwnedLocally)
-                    {
-                        Debug.Log("Sending: " + dataToSend);
-                        _SGHandSync.SetTrackedData(dataToSend);
-                    }
-                }
-            //}
+        _SGHandSync.SetTrackedData(dataToSend);
         //}
+        //else
+        //{
+
+        //If data confidence is low, hide hand
+        //_mySkinMeshRenderer.enabled = false;
+
+        //dataToSend = "0|";
     }
 
     //Everything within Update has to do with the remote hand.
@@ -259,7 +248,6 @@ public class handSyncImpl : MonoBehaviour
     {
         if (!handReady)
             return;
-        //Debug.Log("NetHandData: " + netHandData);
 
         if (netHandData == "")
             return;
@@ -273,7 +261,6 @@ public class handSyncImpl : MonoBehaviour
             }
         }
 
-        Debug.Log("Receiving: " + netHandData);
         string[] netHandDataArr = netHandData.Split('|');
 
         if (netHandDataArr[0] == "0")
@@ -289,22 +276,19 @@ public class handSyncImpl : MonoBehaviour
 
         if (netHandDataArr[1] == "1")
         {
-            Vector3 pos = new Vector3(float.Parse(netHandDataArr[2], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[3], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[4], CultureInfo.InvariantCulture));
-            Quaternion rot = new Quaternion(float.Parse(netHandDataArr[5], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[6], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[7], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[8], CultureInfo.InvariantCulture));
-            _remoteRoot.SetPositionAndRotation(pos, rot);
+            _remoteRoot.position = new Vector3(float.Parse(netHandDataArr[2], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[3], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[4], CultureInfo.InvariantCulture));
+            _remoteRoot.eulerAngles = new Vector3(float.Parse(netHandDataArr[5], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[6], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[7], CultureInfo.InvariantCulture));
         }
 
-        if (netHandDataArr[9] == "1")
+        if (netHandDataArr[8] == "1")
         {
-            _remoteRoot.localScale = new Vector3(float.Parse(netHandDataArr[10], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[11], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[12], CultureInfo.InvariantCulture));
+            _remoteRoot.localScale = new Vector3(float.Parse(netHandDataArr[9], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[10], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[11], CultureInfo.InvariantCulture));
         }
 
         for (var i = 0; i < _remoteBones.Count; ++i)
         {
-            Debug.Log(_remoteBones[i].name);
-            Vector3 pos = new Vector3(float.Parse(netHandDataArr[13 + i]), float.Parse(netHandDataArr[14 + i]), float.Parse(netHandDataArr[15 + i]));
-            Quaternion rot = new Quaternion(float.Parse(netHandDataArr[16 + i]), float.Parse(netHandDataArr[17 + i]), float.Parse(netHandDataArr[18 + i]), float.Parse(netHandDataArr[19 + i]));
-            _remoteBones[i].SetPositionAndRotation(_remoteBones[i].position, rot);
+            int tempBoneCount = i * 3;
+            _remoteBones[i].localEulerAngles = new Vector3(float.Parse(netHandDataArr[12 + tempBoneCount], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[13 + tempBoneCount], CultureInfo.InvariantCulture), float.Parse(netHandDataArr[14 + tempBoneCount], CultureInfo.InvariantCulture));
         }
     }
 
@@ -349,5 +333,10 @@ public class handSyncImpl : MonoBehaviour
     public static Quaternion FromFlippedZQuatf(Quaternion q)
     {
         return new Quaternion() { x = -q.x, y = -q.y, z = q.z, w = q.w };
+    }
+
+    public static Vector3 FromFlippedZVector3f(Vector3 v)
+    {
+        return new Vector3() { x = v.x, y = v.y, z = -v.z };
     }
 }

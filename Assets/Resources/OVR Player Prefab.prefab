@@ -1836,7 +1836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skeletonType: 1
   _updateRootPose: 1
-  _updateRootScale: 1
+  _updateRootScale: 0
   _mySkinMeshRenderer: {fileID: 876123519130887947}
   _SGHandSync: {fileID: 5114562542615787790}
   rtView: {fileID: 7993985180879331569}
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b848fb75663c44aac62d1372cce1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sgHand: {fileID: 6054403117335559093}
+  handSyncImpl: {fileID: 6054403117335559093}
 --- !u!114 &2207885788067322715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3073,7 +3073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skeletonType: 0
   _updateRootPose: 1
-  _updateRootScale: 1
+  _updateRootScale: 0
   _mySkinMeshRenderer: {fileID: 3850480531458886433}
   _SGHandSync: {fileID: 1782123704593438776}
   rtView: {fileID: 7993985180879331569}
@@ -3090,7 +3090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b848fb75663c44aac62d1372cce1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sgHand: {fileID: 5707799653186260085}
+  handSyncImpl: {fileID: 5707799653186260085}
 --- !u!114 &6976585668519228282
 MonoBehaviour:
   m_ObjectHideFlags: 0

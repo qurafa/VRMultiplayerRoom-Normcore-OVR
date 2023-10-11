@@ -9,10 +9,10 @@ Script Description : Sync Hand Pose Model Data Through Normcore
 
 using Normal.Realtime;
 
-public class handPoseModelSync : RealtimeComponent
+public class handPoseModelSync : RealtimeComponent <handPoseModel>
 {
     //Private Variables
-    private handPoseModel _model;
+    //private handPoseModel _model;
 
     //Public Variables
     public handSyncImpl handSyncImpl;
@@ -20,10 +20,29 @@ public class handPoseModelSync : RealtimeComponent
     private void Start()
     {
         //Reference Our Oculus Hand Script That Gets/Applies Bone Data to the Hands
-        //handSyncImpl = GetComponent<handSyncImpl>();
+        if(!handSyncImpl)
+            handSyncImpl = GetComponent<handSyncImpl>();
     }
 
-    private handPoseModel model
+    protected override void OnRealtimeModelReplaced(handPoseModel previousModel, handPoseModel currentModel)
+    {
+        if (previousModel != null)
+        {
+            previousModel.skeletonTrackedDataDidChange -= TrackedDataDidChange;
+        }
+
+        if (currentModel != null)
+        {
+            if (currentModel.isFreshModel)
+                SetTrackedData("0|");
+
+            UpdateTrackedData();
+
+            currentModel.skeletonTrackedDataDidChange += TrackedDataDidChange;
+        }
+    }
+
+    /*private handPoseModel model
     {
         set
         {
@@ -44,7 +63,7 @@ public class handPoseModelSync : RealtimeComponent
                 }
             }
         }
-    }
+    }*/
 
     private void TrackedDataDidChange(handPoseModel model, string value)
     {
@@ -53,18 +72,18 @@ public class handPoseModelSync : RealtimeComponent
 
     private void UpdateTrackedData()
     {
-        if (_model == null)
+        if (model == null)
             return;
 
-        if (_model.skeletonTrackedData == "")
+        if (model.skeletonTrackedData == "")
             return;
 
         //Send Received Hand/Bone Data to Update Function in SG Quest Hand Script
-        handSyncImpl.updateFromNormCore(_model.skeletonTrackedData);
+        handSyncImpl.updateFromNormCore(model.skeletonTrackedData);
     }
 
     public void SetTrackedData(string trackedData)
     {
-        _model.skeletonTrackedData = trackedData;
+        model.skeletonTrackedData = trackedData;
     }
 }
