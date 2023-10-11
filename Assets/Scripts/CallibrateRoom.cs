@@ -51,6 +51,9 @@ public class CallibrateRoom : MonoBehaviour
 
     void Start()
     {
+        if (!_rotationReference)
+            _rotationReference = GameObject.FindWithTag("MainCamera");
+
         _roomRB = _room.GetComponent<Rigidbody>();
         mode = Mode.Standby;
     }

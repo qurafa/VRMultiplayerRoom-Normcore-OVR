@@ -15,12 +15,12 @@ public class handPoseModelSync : RealtimeComponent
     private handPoseModel _model;
 
     //Public Variables
-    public SpeakGeekOculusQuestHand sgHand;
+    public handSyncImpl handSyncImpl;
     
     private void Start()
     {
         //Reference Our Oculus Hand Script That Gets/Applies Bone Data to the Hands
-        sgHand = GetComponent<SpeakGeekOculusQuestHand>();
+        //handSyncImpl = GetComponent<handSyncImpl>();
     }
 
     private handPoseModel model
@@ -60,7 +60,7 @@ public class handPoseModelSync : RealtimeComponent
             return;
 
         //Send Received Hand/Bone Data to Update Function in SG Quest Hand Script
-        sgHand.updateFromNormCore(_model.skeletonTrackedData);
+        handSyncImpl.updateFromNormCore(_model.skeletonTrackedData);
     }
 
     public void SetTrackedData(string trackedData)

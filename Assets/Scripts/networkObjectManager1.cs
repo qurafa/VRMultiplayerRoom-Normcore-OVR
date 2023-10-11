@@ -9,23 +9,15 @@ Script Description : Enable/Disable Objects Based on Remote/Local Player
 
 using UnityEngine;
 using Normal.Realtime;
-using HandPhysicsToolkit.Modules.Avatar;
 
-public class networkObjectManager : MonoBehaviour
+public class networkObjectManager1 : MonoBehaviour
 {
-/*    public Camera[] localCameras;
-
+    public Camera localCamera;
     public AudioListener localAudioListener;
 
     public OVRCameraRig localOVRCameraRig;
 
-    public OVRManager localOVRManager;
-
-    public OVRHeadsetEmulator localEmulator;*/
-
-    public GameObject[] Hands;
-
-    //public GameObject[] setInactive;
+    public GameObject[] localOVRHands;
 
     public RealtimeView rtView;
 
@@ -56,41 +48,35 @@ public class networkObjectManager : MonoBehaviour
         }
 
         //IF THIS IS NOT OUR REALTIME VIEW
-        if (!rtView.isOwnedLocally) {
-/*            foreach (GameObject g in setInactive)
-                Destroy(g);
-
+        if (!rtView.isOwnedLocally)
+        {
             Destroy(localAudioListener);
+
             Destroy(localOVRCameraRig);
-            Destroy(localOVRManager);
-            Destroy(localEmulator);
 
-            foreach(Camera cam in localCameras)
-                Destroy(cam);*/
+            Destroy(localCamera);
 
-            /*foreach (GameObject hand in Hands)
+            //LOOP THROUGH HAND COMPONENTS AND DISABLE OVR COMPONENTS
+            foreach (GameObject ovrHand in localOVRHands)
             {
                 //OVR SKELETON
-                if (hand.GetComponent<OVRSkeleton>())
+                if (ovrHand.GetComponent<OVRSkeleton>())
                 {
-                    Destroy(hand.GetComponent<OVRSkeleton>());
+                    Destroy(ovrHand.GetComponent<OVRSkeleton>());
                 }
 
                 //OVR HAND
-                if (hand.GetComponent<OVRHand>())
+                if (ovrHand.GetComponent<OVRHand>())
                 {
-                    Destroy(hand.GetComponent<OVRHand>());
+                    Destroy(ovrHand.GetComponent<OVRHand>());
                 }
-            }*/
-
-            foreach(ReprView rV in GetComponentsInChildren<ReprView>())
-                Destroy(rV);
-
-            foreach(ReprModel rM in GetComponentsInChildren<ReprModel>())
-                Destroy(rM);
+            }
         }
         else
         {
+            //TAG LOCAL CAMERA
+            localCamera.gameObject.tag = "MainCamera";
+
             //REQUEST OWNERSHIP OF EACH CHILD REALTIMEVIEW
             foreach (RealtimeView childRTView in GetComponentsInChildren<RealtimeView>())
             {
@@ -103,33 +89,33 @@ public class networkObjectManager : MonoBehaviour
                 childRTTransform.RequestOwnership();
             }
 
-            /*if (Application.isEditor)
+            if (Application.isEditor)
             {
                 //LOOP THROUGH HAND COMPONENTS AND DISABLE OVR COMPONENTS
-                foreach (GameObject hand in Hands)
+                foreach (GameObject ovrHand in localOVRHands)
                 {
                     //OVR SKELETON
-                    if (hand.GetComponent<OVRSkeleton>())
+                    if (ovrHand.GetComponent<OVRSkeleton>())
                     {
-                        Destroy(hand.GetComponent<OVRSkeleton>());
+                        Destroy(ovrHand.GetComponent<OVRSkeleton>());
                     }
 
                     //OVR HAND
-                    if (hand.GetComponent<OVRHand>())
+                    if (ovrHand.GetComponent<OVRHand>())
                     {
-                        Destroy(hand.GetComponent<OVRHand>());
+                        Destroy(ovrHand.GetComponent<OVRHand>());
                     }
                 }
-            }*/
+            }
         }
 
         //LOOP THROUGH HAND COMPONENTS AND READY OUR LOCAL HANDS
-        foreach (GameObject hand in Hands)
+        foreach (GameObject ovrHand in localOVRHands)
         {
             //Speak Geek Quest Hand
-            if (hand.GetComponentInChildren<handSyncImpl>())
+            if (ovrHand.GetComponentInChildren<SpeakGeekOculusQuestHand>())
             {
-                hand.GetComponentInChildren<handSyncImpl>().readyHand();
+                ovrHand.GetComponentInChildren<SpeakGeekOculusQuestHand>().readyHand();
             }
         }
 
