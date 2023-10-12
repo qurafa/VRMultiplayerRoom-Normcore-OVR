@@ -1,7 +1,12 @@
+using HandPhysicsToolkit.Modules.Avatar;
+using Meta.WitAi.Speech;
+using Normal.Realtime;
 using Oculus.Interaction.OVR.Input;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
+using Unity.VisualScripting;
+using UnityEditor.Search;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -24,7 +29,21 @@ public class CallibrateRoom : MonoBehaviour
     [SerializeField]
     private List<GameObject> _ignores;
 
+/*    private List<Transform> _ignores;
+    private List<Rigidbody> _ignoresRigidbody;*/
+    /// <summary>
+    /// The RealtimeView of the Room
+    /// </summary>
+    [SerializeField]
+    private RealtimeView _rtView;
+    /// <summary>
+    /// The RealtimeTransform of the Room
+    /// </summary>
+    [SerializeField]
+    private RealtimeTransform _rtTransform;
+
     private Rigidbody _roomRB;
+    private List<Transform> _listOfChildren = new List<Transform>();
 
     enum Mode
     {
@@ -32,12 +51,13 @@ public class CallibrateRoom : MonoBehaviour
         CalibratingPos,
         CalibratingRot
     }
-
     private Mode _mode;
-    
-    private float direction = 0.0f;
-    private readonly float rotFactor = 0.05f;
 
+    [SerializeField]
+    private float direction = 0.0f;
+    public readonly float rotFactor = 0.05f;
+
+    [SerializeField]
     Mode mode
     {
         get { return _mode; }
@@ -118,15 +138,19 @@ public class CallibrateRoom : MonoBehaviour
         {
             _roomRB.constraints = RigidbodyConstraints.FreezeAll;
             ToggleIgnores(true);
+            ToggleOwnership(false);
         }
         else if (mode == Mode.CalibratingPos)
         {
+            ToggleOwnership(true);
             ToggleIgnores(false);
             _roomRB.constraints = RigidbodyConstraints.FreezeRotation;
         }
         else if (mode == Mode.CalibratingRot)
         {
+            ToggleOwnership(true);
             ToggleIgnores(false);
+            _roomRB.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePosition;
             //rotate so the forward is parallel to the rotation reference
             
         }
@@ -136,11 +160,107 @@ public class CallibrateRoom : MonoBehaviour
         }
     }
 
-    private void ToggleIgnores(bool val)
+    private void ToggleOwnership(bool val)
     {
-        foreach(GameObject g in _ignores)
+        _listOfChildren.Clear();
+        GetChildRecursive(_room.transform);
+        if (val)
         {
-            g.SetActive(val);
+            if (_rtView) _rtView.RequestOwnership();
+            if (_rtTransform) _rtTransform.RequestOwnership();
+            foreach (Transform t in _listOfChildren)
+            {
+                if (t.TryGetComponent<RealtimeView>(out RealtimeView rTV))
+                    rTV.RequestOwnership();
+                if (t.TryGetComponent<RealtimeTransform>(out RealtimeTransform rTT))
+                    rTT.RequestOwnership();
+            }
+        }
+        else
+        {
+            _rtView.ClearOwnership();
+            _rtTransform.ClearOwnership();
+            foreach (Transform t in _listOfChildren)
+            {
+                if (t.TryGetComponent<RealtimeView>(out RealtimeView rTV))
+                    rTV.ClearOwnership();
+                if (t.TryGetComponent<RealtimeTransform>(out RealtimeTransform rTT))
+                    rTT.ClearOwnership();
+            }
+        }
+        
+    }
+
+    private void GetChildRecursive(Transform obj)
+    {
+        if (null == obj)
+            return;
+
+        foreach (Transform child in obj)
+        {
+            if (null == child)
+                continue;
+
+            if (child != obj)
+            {
+                _listOfChildren.Add(child);
+            }
+            GetChildRecursive(child);
         }
     }
+
+    private void ToggleIgnores(bool val)
+    {
+        if (val)
+        {
+            Exec();
+            //SetLocalTransform();
+        }
+        else
+        {
+            //SaveTransform();
+            Exec();
+        }
+
+        void Exec()
+        {
+            foreach(GameObject g in _ignores)
+            {
+                g.SetActive(val);
+            }
+        }
+    }
+
+/*    private void SaveTransform()
+    {
+        if (_ignoresTransform == null || _ignoresTransform.Count <= 0 || _ignoresTransform.Count < _ignores.Count)
+        {
+            _ignoresTransform = new List<Transform>();
+            for (int i = 0; i < _ignores.Count; i++)
+                _ignoresTransform.Add(_ignores[i]);
+        }
+        else
+        {
+            for (int i = 0; i < _ignores.Count; i++)
+                _ignoresTransform[i] = _ignores[i];
+        }
+    }
+
+    private void SetTransform()
+    {
+        if (_ignoresTransform == null || _ignoresTransform.Count < _ignores.Count)
+            SaveTransform();
+
+        for (int i = 0; i < _ignores.Count; i++)
+            _ignores[i].SetPositionAndRotation(_ignoresTransform[i].position, _ignoresTransform[i].rotation);
+    }
+
+    private void SetLocalTransform()
+    {
+        if (_ignoresTransform == null || _ignoresTransform.Count < _ignores.Count)
+            SaveTransform();
+
+        for (int i = 0; i < _ignores.Count; i++)
+            _ignores[i].SetLocalPositionAndRotation(_ignoresTransform[i].localPosition, _ignoresTransform[i].localRotation);
+    }*/
 }
