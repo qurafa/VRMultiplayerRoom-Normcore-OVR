@@ -185,7 +185,7 @@ public class handSyncImpl : MonoBehaviour
             //We check oculus data confidence
             //if (data.IsDataValid && data.IsDataHighConfidence)
             //{
-        _mySkinMeshRenderer.enabled = true;
+        //_mySkinMeshRenderer.enabled = true;
 
         dataToSend += "1|";
 
