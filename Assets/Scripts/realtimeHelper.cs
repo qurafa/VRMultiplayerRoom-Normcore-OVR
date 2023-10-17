@@ -12,15 +12,21 @@ using Normal.Realtime;
 using System;
 using UnityEngine.UIElements;
 using HandPhysicsToolkit.Modules.Part.ContactDetection;
+using static UnityEngine.UI.Image;
+using System.Collections.Generic;
 
 public class realtimeHelper : MonoBehaviour
 {
-    private Realtime _Realtime;
+
+    [SerializeField]
+    private List<GameObject> _localPlayer;
     [SerializeField]
     private string playerPrefabName;
     [SerializeField]
     private string roomName;
 
+    private Realtime _Realtime;
+    private Transform spawnTransform;
     private void Start()
     {
         _Realtime = GetComponent<Realtime>();
@@ -28,17 +34,43 @@ public class realtimeHelper : MonoBehaviour
         _Realtime.didConnectToRoom += _Realtime_didConnectToRoom;
 
         //Connect to Preset Code
-        _Realtime.Connect(roomName);
+        //_Realtime.Connect(roomName);
     }
 
 
     //Realtime Event when Connecting to a Room
     private void _Realtime_didConnectToRoom(Realtime realtime)
     {
-        GameObject newPlayer = Realtime.Instantiate(playerPrefabName);
+        int id = _Realtime.clientID;
+
+        if (!spawnTransform)
+        {
+            //if not then get from one of the default positions
+            spawnTransform = _localPlayer[0].transform;//either its current position
+
+            foreach (GameObject g in GameObject.FindGameObjectsWithTag("spawn"))
+            {
+                if (g.name.Equals(id.ToString()))
+                {
+                    spawnTransform = g.transform; break;
+                }
+            }
+        }
+
+        foreach (GameObject l in _localPlayer)
+            l.transform.SetPositionAndRotation(spawnTransform.position, spawnTransform.rotation);
+
+        GameObject newPlayer = Realtime.Instantiate(playerPrefabName, spawnTransform.position, spawnTransform.rotation, new Realtime.InstantiateOptions
+        {
+            ownedByClient = true,
+            preventOwnershipTakeover = true,
+            destroyWhenOwnerLeaves = true,
+            destroyWhenLastClientLeaves = true,
+            useInstance = _Realtime,
+        });
         RequestOwnerShip(newPlayer);
 
-        if (_Realtime.clientID == 0)
+        if (id == 0)
             AllRequestOwnerShip();
     }
 
@@ -88,5 +120,15 @@ public class realtimeHelper : MonoBehaviour
         var finalString = new String(stringChars);
 
         return finalString;
+    }
+
+    public void JoinRoom(Transform transform)
+    {
+        spawnTransform = transform;
+        
+
+
+        //Connect to room
+        _Realtime.Connect(roomName);
     }
 }

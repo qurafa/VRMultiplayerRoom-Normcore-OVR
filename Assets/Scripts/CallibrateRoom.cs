@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using Unity.VisualScripting;
-using UnityEditor.Search;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -41,15 +40,21 @@ public class CallibrateRoom : MonoBehaviour
     /// </summary>
     [SerializeField]
     private RealtimeTransform _rtTransform;
-
+    /// <summary>
+    /// realtimeHelper to help us join the room
+    /// </summary>
+    [SerializeField]
+    private realtimeHelper _rtHelper;
     private Rigidbody _roomRB;
     private List<Transform> _listOfChildren = new List<Transform>();
+    private bool _canCalibrate = true;//we turn this off after we're done calibrating
 
     enum Mode
     {
         Standby,
         CalibratingPos,
-        CalibratingRot
+        CalibratingRot,
+        Done
     }
     private Mode _mode;
 
@@ -81,7 +86,7 @@ public class CallibrateRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetActiveController() != OVRInput.Controller.Hands)
+        if (_canCalibrate && OVRInput.GetActiveController() != OVRInput.Controller.Hands)
         {
             //if the A or X button is pressed
             if (OVRInput.GetUp(OVRInput.Button.One) || OVRInput.GetUp(OVRInput.Button.Three))
@@ -126,6 +131,11 @@ public class CallibrateRoom : MonoBehaviour
                         return;
                 }
             }
+            //if the "option" or "|||" or "done" button is pressed
+            if (OVRInput.GetUp(OVRInput.Button.Start))
+            {
+                mode = Mode.Done;
+            }
         }
 
         if(mode == Mode.CalibratingRot)
@@ -138,21 +148,22 @@ public class CallibrateRoom : MonoBehaviour
         {
             _roomRB.constraints = RigidbodyConstraints.FreezeAll;
             ToggleIgnores(true);
-            ToggleOwnership(false);
         }
         else if (mode == Mode.CalibratingPos)
         {
-            ToggleOwnership(true);
             ToggleIgnores(false);
             _roomRB.constraints = RigidbodyConstraints.FreezeRotation;
         }
         else if (mode == Mode.CalibratingRot)
         {
-            ToggleOwnership(true);
             ToggleIgnores(false);
             _roomRB.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePosition;
             //rotate so the forward is parallel to the rotation reference
-            
+        }
+        else if (mode == Mode.Done)
+        {
+            _canCalibrate = false;
+            //_rtHelper.JoinRoom();
         }
         else
         {
@@ -211,23 +222,9 @@ public class CallibrateRoom : MonoBehaviour
 
     private void ToggleIgnores(bool val)
     {
-        if (val)
+        foreach (GameObject g in _ignores)
         {
-            Exec();
-            //SetLocalTransform();
-        }
-        else
-        {
-            //SaveTransform();
-            Exec();
-        }
-
-        void Exec()
-        {
-            foreach(GameObject g in _ignores)
-            {
-                g.SetActive(val);
-            }
+            g.SetActive(val);
         }
     }
 

@@ -41,7 +41,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123517714071668}
-  - component: {fileID: 876123517714071674}
   m_Layer: 8
   m_Name: r_ring1
   m_TagString: AnimFollow
@@ -65,85 +64,6 @@ Transform:
   m_Father: {fileID: 876123517788366553}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123517714071674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123517714071675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123517788366557
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +73,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123517788366553}
-  - component: {fileID: 876123517788366556}
   m_Layer: 8
   m_Name: r_wrist
   m_TagString: AnimFollow
@@ -181,85 +100,6 @@ Transform:
   m_Father: {fileID: 876123519130887944}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123517788366556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123517788366557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 1
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: slave
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123517798990405
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +109,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123517798990404}
-  - component: {fileID: 876123517798990407}
   m_Layer: 8
   m_Name: r_ring_null
   m_TagString: AnimFollow
@@ -292,85 +131,6 @@ Transform:
   m_Father: {fileID: 876123519136706695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123517798990407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123517798990405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123517977062905
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +140,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123517977062904}
-  - component: {fileID: 876123517977062907}
   m_Layer: 8
   m_Name: r_pinky3
   m_TagString: AnimFollow
@@ -404,85 +163,6 @@ Transform:
   m_Father: {fileID: 876123518654117566}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123517977062907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123517977062905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123518510284859
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +172,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123518510284858}
-  - component: {fileID: 876123518510284853}
   m_Layer: 8
   m_Name: r_pinky0
   m_TagString: AnimFollow
@@ -516,85 +195,6 @@ Transform:
   m_Father: {fileID: 876123517788366553}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -23, y: 17, z: -5.8}
---- !u!114 &876123518510284853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123518510284859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 1
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123518568451284
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +204,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123518568451287}
-  - component: {fileID: 876123518568451286}
   m_Layer: 8
   m_Name: r_index3
   m_TagString: AnimFollow
@@ -628,85 +227,6 @@ Transform:
   m_Father: {fileID: 876123518810173971}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123518568451286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123518568451284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123518581234930
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +236,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123518581234927}
-  - component: {fileID: 876123518581234925}
   m_Layer: 8
   m_Name: r_thumb0
   m_TagString: AnimFollow
@@ -740,85 +259,6 @@ Transform:
   m_Father: {fileID: 876123517788366553}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123518581234925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123518581234930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123518654117565
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +268,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123518654117566}
-  - component: {fileID: 876123518654117564}
   m_Layer: 8
   m_Name: r_pinky2
   m_TagString: AnimFollow
@@ -852,85 +291,6 @@ Transform:
   m_Father: {fileID: 876123519157838199}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123518654117564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123518654117565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123518674586490
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,7 +300,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123518674586485}
-  - component: {fileID: 876123518674586484}
   m_Layer: 8
   m_Name: r_middle3
   m_TagString: AnimFollow
@@ -964,85 +323,6 @@ Transform:
   m_Father: {fileID: 876123518712041242}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123518674586484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123518674586490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123518712041241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +332,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123518712041242}
-  - component: {fileID: 876123518712041240}
   m_Layer: 8
   m_Name: r_middle2
   m_TagString: AnimFollow
@@ -1076,85 +355,6 @@ Transform:
   m_Father: {fileID: 876123519130870519}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123518712041240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123518712041241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123518810173974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,7 +364,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123518810173971}
-  - component: {fileID: 876123518810173969}
   m_Layer: 8
   m_Name: r_index2
   m_TagString: AnimFollow
@@ -1188,85 +387,6 @@ Transform:
   m_Father: {fileID: 876123519039892688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123518810173969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123518810173974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123518905024370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,7 +396,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123518905024367}
-  - component: {fileID: 876123518905024365}
   m_Layer: 8
   m_Name: r_thumb1
   m_TagString: AnimFollow
@@ -1300,85 +419,6 @@ Transform:
   m_Father: {fileID: 876123518581234927}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123518905024365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123518905024370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519037437006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,7 +428,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519037437003}
-  - component: {fileID: 876123519037437001}
   m_Layer: 8
   m_Name: r_thumb2
   m_TagString: AnimFollow
@@ -1412,85 +451,6 @@ Transform:
   m_Father: {fileID: 876123518905024367}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519037437001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519037437006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519039892695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +460,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519039892688}
-  - component: {fileID: 876123519039892694}
   m_Layer: 8
   m_Name: r_index1
   m_TagString: AnimFollow
@@ -1524,85 +483,6 @@ Transform:
   m_Father: {fileID: 876123517788366553}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519039892694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519039892695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519130870522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,7 +492,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519130870519}
-  - component: {fileID: 876123519130870517}
   m_Layer: 8
   m_Name: r_middle1
   m_TagString: AnimFollow
@@ -1636,85 +515,6 @@ Transform:
   m_Father: {fileID: 876123517788366553}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519130870517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519130870522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519130887945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876123519130887945}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1906,7 +706,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519136706695}
-  - component: {fileID: 876123519136706694}
   m_Layer: 8
   m_Name: r_ring3
   m_TagString: AnimFollow
@@ -1930,85 +729,6 @@ Transform:
   m_Father: {fileID: 876123519265312182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519136706694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519136706692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519157838202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,7 +738,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519157838199}
-  - component: {fileID: 876123519157838197}
   m_Layer: 8
   m_Name: r_pinky1
   m_TagString: AnimFollow
@@ -2042,85 +761,6 @@ Transform:
   m_Father: {fileID: 876123518510284858}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519157838197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519157838202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519236880069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,7 +770,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519236880068}
-  - component: {fileID: 876123519236880071}
   m_Layer: 8
   m_Name: r_thumb3
   m_TagString: AnimFollow
@@ -2154,85 +793,6 @@ Transform:
   m_Father: {fileID: 876123519037437003}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519236880071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519236880069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519265312181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,7 +802,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519265312182}
-  - component: {fileID: 876123519265312180}
   m_Layer: 8
   m_Name: r_ring2
   m_TagString: AnimFollow
@@ -2266,85 +825,6 @@ Transform:
   m_Father: {fileID: 876123517714071668}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519265312180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519265312181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519271579097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,7 +834,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519271579096}
-  - component: {fileID: 876123519271579099}
   m_Layer: 8
   m_Name: r_pinky_null
   m_TagString: AnimFollow
@@ -2377,85 +856,6 @@ Transform:
   m_Father: {fileID: 876123517977062904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519271579099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519271579097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519303402067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,7 +865,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519303402066}
-  - component: {fileID: 876123519303402061}
   m_Layer: 8
   m_Name: r_middle_null
   m_TagString: AnimFollow
@@ -2488,85 +887,6 @@ Transform:
   m_Father: {fileID: 876123518674586485}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519303402061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519303402067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519403988491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,7 +896,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519403988490}
-  - component: {fileID: 876123519403988485}
   m_Layer: 8
   m_Name: r_index_null
   m_TagString: AnimFollow
@@ -2599,85 +918,6 @@ Transform:
   m_Father: {fileID: 876123518568451287}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519403988485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519403988491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &876123519610982846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,7 +927,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876123519610982841}
-  - component: {fileID: 876123519610982840}
   m_Layer: 8
   m_Name: r_thumb_null
   m_TagString: AnimFollow
@@ -2710,85 +949,6 @@ Transform:
   m_Father: {fileID: 876123519236880068}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &876123519610982840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876123519610982846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd29bb4de4ae3554093e9837c3114347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awaked: 0
-  point: {fileID: 0}
-  transformRef: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  skinnedMeshRenderer: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  relativeToParentBone: 1
-  originalTsfRef: {fileID: 0}
-  key: 
-  pheasy: {fileID: 0}
-  goal: {fileID: 0}
-  usePhysics: 1
-  isSpecial: 0
-  minLocalRotZ: -1
-  maxLocalRotZ: 361
-  fixedLocalRot: {x: 0, y: 0, z: 0, w: 1}
-  _constrained: 0
-  ready: 0
-  puppet: {fileID: 0}
-  constraint:
-    pheasy: {fileID: 0}
-    enabled: 0
-    name: 
-    joint: {fileID: 0}
-    anchor: {fileID: 0}
-    connectedAnchor: {fileID: 0}
-    connectedBody: {fileID: 0}
-    keepAxisRelativeToObject: 0
-    axis: {fileID: 0}
-    targetPosition: {fileID: 0}
-    settings:
-      linearMotion: 2
-      angularMotion: 2
-      angularDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      motionDrive:
-        spring: 0
-        damper: 0
-        maxForce: 0
-      collideWithConnectedRb: 0
-    gradualMaxTime: 0
-    error: 0
-    extensions: []
-    force: 0
-    showAxis: 0
-    showAnchor: 0
-    showConnAcnhor: 0
-    gradualLerp: 0
-    jointFrameRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialWorldRotation: {x: 0, y: 0, z: 0, w: 0}
-    initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-    minAngularDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    minMotionDrive:
-      spring: 0
-      damper: 0
-      maxForce: 0
-    anchorAxis: {fileID: 0}
-    connAnchorAxis: {fileID: 0}
-    setAxisWhenEnabled: 0
-    tmpConnAnchor: {x: 0, y: 0, z: 0}
-    tmpTargetPos: {x: 0, y: 0, z: 0}
-    updated: 0
 --- !u!1 &1063980174116568884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,7 +1141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3850480531458886447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
