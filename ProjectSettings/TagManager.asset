@@ -9,6 +9,7 @@ TagManager:
   - spawn
   - l_slave
   - r_slave
+  - Players
   layers:
   - Default
   - TransparentFX
