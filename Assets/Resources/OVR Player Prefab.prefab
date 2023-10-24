@@ -992,6 +992,7 @@ GameObject:
   - component: {fileID: 1233439570073872982}
   - component: {fileID: 7993985180879331569}
   - component: {fileID: 4014251145752544780}
+  - component: {fileID: 7365917353566096578}
   m_Layer: 0
   m_Name: OVR Player Prefab
   m_TagString: Untagged
@@ -1041,6 +1042,8 @@ MonoBehaviour:
     component: {fileID: 0}
   - componentID: 2
     component: {fileID: 0}
+  - componentID: 3
+    component: {fileID: 7365917353566096578}
   _childViews:
   - componentID: 1
     component: {fileID: 0}
@@ -1080,6 +1083,24 @@ MonoBehaviour:
   - {fileID: 3850480531458886447}
   - {fileID: 876123519130887945}
   rtView: {fileID: 7993985180879331569}
+--- !u!114 &7365917353566096578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453456381409013654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1029778088, guid: ebae63e7edba59945a994528ada1f7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolate: 1
+  _syncPosition: 1
+  _syncRotation: 1
+  _syncScale: 1
+  _syncVelocity: 1
+  _maintainOwnershipWhileSleeping: 0
 --- !u!1 &3850480531437720182
 GameObject:
   m_ObjectHideFlags: 0

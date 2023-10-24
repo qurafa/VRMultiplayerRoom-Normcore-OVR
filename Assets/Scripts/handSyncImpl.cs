@@ -256,8 +256,8 @@ public class handSyncImpl : MonoBehaviour
         {
             if (rtView.isOwnedLocally)
             {
-                _mySkinMeshRenderer.enabled = false;
-                return;
+                /*_mySkinMeshRenderer.enabled = false;
+                return;*/
             }
         }
 

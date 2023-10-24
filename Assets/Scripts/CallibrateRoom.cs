@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class CallibrateRoom : MonoBehaviour
@@ -17,10 +18,15 @@ public class CallibrateRoom : MonoBehaviour
     [SerializeField]
     private GameObject _room;
     /// <summary>
-    /// What should be referenced when setting the rotation of the room
+    /// What the room shouuld rotate about
     /// </summary>
     [SerializeField]
     private GameObject _rotationReference;
+    /// <summary>
+    /// Reference to the center of the player in the room
+    /// </summary>
+    [SerializeField]
+    private GameObject _playerCenterReference;
     /// <summary>
     /// Objects to be ignored when callibrating the room
     /// Added so things like object collision does not affect
@@ -30,7 +36,7 @@ public class CallibrateRoom : MonoBehaviour
 
 /*    private List<Transform> _ignores;
     private List<Rigidbody> _ignoresRigidbody;*/
-    /// <summary>
+/*    /// <summary>
     /// The RealtimeView of the Room
     /// </summary>
     [SerializeField]
@@ -39,15 +45,26 @@ public class CallibrateRoom : MonoBehaviour
     /// The RealtimeTransform of the Room
     /// </summary>
     [SerializeField]
-    private RealtimeTransform _rtTransform;
+    private RealtimeTransform _rtTransform;*/
     /// <summary>
     /// realtimeHelper to help us join the room
     /// </summary>
     [SerializeField]
     private realtimeHelper _rtHelper;
+    /// <summary>
+    /// Event to be triggered after we're done calibrating the room
+    /// </summary>
+   [SerializeField]
+    private MyLoadSceneEvent _doneEvent;
+    [SerializeField]
+    private bool _doneDebug;
+
     private Rigidbody _roomRB;
     private List<Transform> _listOfChildren = new List<Transform>();
+    [SerializeField]
     private bool _canCalibrate = true;//we turn this off after we're done calibrating
+
+    private MyTransform _send;
 
     enum Mode
     {
@@ -81,6 +98,9 @@ public class CallibrateRoom : MonoBehaviour
 
         _roomRB = _room.GetComponent<Rigidbody>();
         mode = Mode.Standby;
+
+        //saving the starting transform
+        _send = new MyTransform(transform.position, transform.eulerAngles);
     }
 
     // Update is called once per frame
@@ -132,7 +152,7 @@ public class CallibrateRoom : MonoBehaviour
                 }
             }
             //if the "option" or "|||" or "done" button is pressed
-            if (OVRInput.GetUp(OVRInput.Button.Start))
+            if (OVRInput.GetUp(OVRInput.Button.Start) || _doneDebug)
             {
                 mode = Mode.Done;
             }
@@ -147,23 +167,32 @@ public class CallibrateRoom : MonoBehaviour
         if (mode == Mode.Standby)
         {
             _roomRB.constraints = RigidbodyConstraints.FreezeAll;
-            ToggleIgnores(true);
+            //ToggleIgnores(true);
         }
         else if (mode == Mode.CalibratingPos)
         {
-            ToggleIgnores(false);
+            //ToggleIgnores(false);
             _roomRB.constraints = RigidbodyConstraints.FreezeRotation;
         }
         else if (mode == Mode.CalibratingRot)
         {
-            ToggleIgnores(false);
+            //ToggleIgnores(false);
             _roomRB.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePosition;
             //rotate so the forward is parallel to the rotation reference
         }
         else if (mode == Mode.Done)
         {
+            Debug.Log("Done");
+            
+            Debug.Log($"PlayerCenterReference {_playerCenterReference.transform.position.ToString()} Room {_room.transform.position}");
+
+            _send = new MyTransform(_playerCenterReference.transform.position - _room.transform.position,
+            _playerCenterReference.transform.eulerAngles);
+
+            if(_doneEvent != null)
+                _doneEvent.Invoke(_send);
+
             _canCalibrate = false;
-            //_rtHelper.JoinRoom();
         }
         else
         {
@@ -171,7 +200,7 @@ public class CallibrateRoom : MonoBehaviour
         }
     }
 
-    private void ToggleOwnership(bool val)
+/*    private void ToggleOwnership(bool val)
     {
         _listOfChildren.Clear();
         GetChildRecursive(_room.transform);
@@ -198,9 +227,8 @@ public class CallibrateRoom : MonoBehaviour
                 if (t.TryGetComponent<RealtimeTransform>(out RealtimeTransform rTT))
                     rTT.ClearOwnership();
             }
-        }
-        
-    }
+        }  
+    }*/
 
     private void GetChildRecursive(Transform obj)
     {
@@ -260,4 +288,21 @@ public class CallibrateRoom : MonoBehaviour
         for (int i = 0; i < _ignores.Count; i++)
             _ignores[i].SetLocalPositionAndRotation(_ignoresTransform[i].localPosition, _ignoresTransform[i].localRotation);
     }*/
+}
+
+[System.Serializable]
+public class MyLoadSceneEvent : UnityEvent<MyTransform>
+{
+}
+
+public struct MyTransform
+{
+    public MyTransform(Vector3 pos, Vector3 eul)
+    {
+        position = pos;
+        eulerAngles = eul;
+    }
+
+    public Vector3 position { get; }
+    public Vector3 eulerAngles { get; }
 }

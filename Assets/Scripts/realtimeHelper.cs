@@ -14,16 +14,20 @@ using UnityEngine.UIElements;
 using HandPhysicsToolkit.Modules.Part.ContactDetection;
 using static UnityEngine.UI.Image;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using Oculus.Interaction.Samples;
 
 public class realtimeHelper : MonoBehaviour
 {
 
     [SerializeField]
-    private List<GameObject> _localPlayer;
+    private GameObject _localPlayer;
     [SerializeField]
     private string playerPrefabName;
     [SerializeField]
     private string roomName;
+    [SerializeField]
+    private GameObject room;
 
     private Realtime _Realtime;
     private Transform spawnTransform;
@@ -45,8 +49,10 @@ public class realtimeHelper : MonoBehaviour
 
         if (!spawnTransform)
         {
+            Debug.Log("spawnTransform not set");
+            Debug.Log("Setting spawnTransform.....");
             //if not then get from one of the default positions
-            spawnTransform = _localPlayer[0].transform;//either its current position
+            spawnTransform = _localPlayer.transform;//either its current position
 
             foreach (GameObject g in GameObject.FindGameObjectsWithTag("spawn"))
             {
@@ -55,10 +61,10 @@ public class realtimeHelper : MonoBehaviour
                     spawnTransform = g.transform; break;
                 }
             }
+            Debug.Log(".....spawnTransform set");
         }
 
-        foreach (GameObject l in _localPlayer)
-            l.transform.SetPositionAndRotation(spawnTransform.position, spawnTransform.rotation);
+        _localPlayer.transform.SetPositionAndRotation(spawnTransform.position, spawnTransform.rotation);
 
         GameObject newPlayer = Realtime.Instantiate(playerPrefabName, spawnTransform.position, spawnTransform.rotation, new Realtime.InstantiateOptions
         {
@@ -122,13 +128,51 @@ public class realtimeHelper : MonoBehaviour
         return finalString;
     }
 
+    public void JoinRoomByOffset(Transform offset)
+    {
+        spawnTransform = new GameObject().transform;
+
+        _Realtime.Connect(roomName);
+    }
+    
+    public void JoinRoomByOffset(MyTransform offset)
+    {
+        spawnTransform = new GameObject().transform;
+
+        spawnTransform.position = new Vector3(_localPlayer.transform.position.x + offset.position.x,
+            _localPlayer.transform.position.y + offset.position.y,
+            _localPlayer.transform.position.z + offset.position.z);
+
+        spawnTransform.eulerAngles = new Vector3(_localPlayer.transform.eulerAngles.x + offset.eulerAngles.x,
+            _localPlayer.transform.eulerAngles.y + offset.eulerAngles.y,
+            _localPlayer.transform.eulerAngles.z + offset.eulerAngles.z);
+
+        Debug.Log("SpawnTransform: " + spawnTransform.position.ToString() + " " + spawnTransform.eulerAngles.ToString());
+
+        _Realtime.Connect(roomName);
+    }
+
     public void JoinRoom(Transform transform)
     {
         spawnTransform = transform;
-        
-
-
-        //Connect to room
         _Realtime.Connect(roomName);
+    }
+    public void JoinRoom(MyTransform transform)
+    {
+        spawnTransform = new GameObject().transform;
+        spawnTransform.position = room.transform.position + transform.position;
+        spawnTransform.eulerAngles = transform.eulerAngles;
+
+        _Realtime.Connect(roomName);
+    }
+    
+    public void JoinRoom(Vector3 pos, Quaternion rot)
+    {
+        spawnTransform = new GameObject().transform;
+        //spawnTransform = transform;
+        spawnTransform.SetPositionAndRotation(pos, rot);
+        spawnTransform.localScale = Vector3.one;
+
+        JoinRoom(spawnTransform);
     }
 }
