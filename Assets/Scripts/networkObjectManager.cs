@@ -46,14 +46,14 @@ public class networkObjectManager : MonoBehaviour
 
         //SEARCH FOR GAMEOBJECTS WITH THE TAG 'SPAWN' AND SET TRANSFORM THE SAME
         //BASED ON OWNER ID
-        foreach(GameObject myGO in GameObject.FindGameObjectsWithTag("spawn"))
+/*        foreach(GameObject myGO in GameObject.FindGameObjectsWithTag("spawn"))
         {
             if (myGO.name == transform.name)
             {
                 transform.position = myGO.transform.position;
                 transform.rotation = myGO.transform.rotation;
             }
-        }
+        }*/
 
         //IF THIS IS NOT OUR REALTIME VIEW
         if (rtView.isOwnedLocally)

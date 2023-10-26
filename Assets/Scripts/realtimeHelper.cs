@@ -42,6 +42,14 @@ public class realtimeHelper : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        if (_Realtime.connected) return;
+
+        if((OVRInput.GetActiveController() != OVRInput.Controller.Hands) && OVRInput.GetUp(OVRInput.Button.Start))
+            _Realtime.Connect(roomName);
+    }
+
     //Realtime Event when Connecting to a Room
     private void _Realtime_didConnectToRoom(Realtime realtime)
     {

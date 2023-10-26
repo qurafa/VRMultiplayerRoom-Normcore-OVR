@@ -106,6 +106,7 @@ public class CallibrateRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //only if we can can calibrate and are holding the controllers
         if (_canCalibrate && OVRInput.GetActiveController() != OVRInput.Controller.Hands)
         {
             //if the A or X button is pressed
@@ -156,10 +157,10 @@ public class CallibrateRoom : MonoBehaviour
             {
                 mode = Mode.Done;
             }
-        }
 
-        if(mode == Mode.CalibratingRot)
-            _roomRB.transform.RotateAround(_rotationReference.transform.position, Vector3.up, rotFactor*direction);
+            if (mode == Mode.CalibratingRot)
+                _roomRB.transform.RotateAround(_rotationReference.transform.position, Vector3.up, rotFactor * direction);
+        }
     }
 
     private void ModeChanged()
