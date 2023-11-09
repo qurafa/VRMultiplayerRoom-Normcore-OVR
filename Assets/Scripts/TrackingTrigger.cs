@@ -10,6 +10,9 @@ public class TrackingTrigger : MonoBehaviour
     [SerializeField]
     private ObjectModelImpl obj;
 
+    /// <summary>
+    /// Whether to track this object or not
+    /// </summary>
     [SerializeField]
     private bool tracking = false;
 
@@ -49,7 +52,7 @@ public class TrackingTrigger : MonoBehaviour
         }
         else if(releaseCount >= releaseLimit)
         {
-            obj.UpdateTS(1);//set to idle when released
+            obj.UpdateTS(0);//set to idle when released
         }
 
         if(stopTrackCount >= stopTrackLimit)
@@ -67,6 +70,10 @@ public class TrackingTrigger : MonoBehaviour
             stopTrackCount += Time.deltaTime;
     }
 
+    /// <summary>
+    /// Get the status of the object with respect to the box
+    /// </summary>
+    /// <returns>The status of the object with respect to the box</returns>
     public string GetStatus()
     {
         return _statusWRTBox;

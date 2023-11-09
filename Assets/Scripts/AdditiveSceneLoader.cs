@@ -24,6 +24,10 @@ public class AdditiveSceneLoader : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    /// <summary>
+    /// Load the next scene plavinf the "player" in that transform
+    /// </summary>
+    /// <param name="playerTransform"></param>
     public void LoadScene(MyTransform playerTransform)
     {
         if(isLoading) return;

@@ -33,16 +33,20 @@ public class ObjectModelImpl : RealtimeComponent<ObjectModel>
         }
     }
 
+    /// <summary>
+    /// To update the tracking state of a GameObject for all the clients in the scene.
+    /// 0 - idle,
+    /// 1 - tracking,
+    /// 2 - stopped tracking.
+    /// </summary>
+    /// <param name="ts"></param>
     public void UpdateTS(int ts)
     {
-        //Debug.Log($"{this.gameObject.name} updating {ts}");
         model.UpdateTrackingState(ts);
     }
 
     private void DoneUpdateTrackState(int ts)
     {
-        //Debug.Log($"{this.gameObject.name} done update {ts}");
-
         switch (ts)
         {
             case 0:

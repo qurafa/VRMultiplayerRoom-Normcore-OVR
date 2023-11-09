@@ -176,6 +176,8 @@ public class realtimeHelper : MonoBehaviour
         spawnTransform.position = room.transform.position + transform.position;
         spawnTransform.eulerAngles = transform.eulerAngles;
 
+        Debug.Log($"PlayerCenterReference {spawnTransform.transform.position.ToString()} Room {room.transform.position}");
+
         _Realtime.Connect(roomName);
     }
     

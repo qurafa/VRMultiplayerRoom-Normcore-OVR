@@ -302,8 +302,17 @@ public struct MyTransform
     {
         position = pos;
         eulerAngles = eul;
+        rotAbt = Vector3.zero;
+    }
+
+    public MyTransform(Vector3 pos, Vector3 eul, Vector3 rotA)
+    {
+        position = pos;
+        eulerAngles = eul;
+        rotAbt = rotA;
     }
 
     public Vector3 position { get; }
     public Vector3 eulerAngles { get; }
+    public Vector3 rotAbt { get; }
 }
