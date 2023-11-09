@@ -28,6 +28,8 @@ public class realtimeHelper : MonoBehaviour
     private string roomName;
     [SerializeField]
     private GameObject room;
+    [SerializeField]
+    private List<GameObject> objectsToSpawn;
 
     private Realtime _Realtime;
     private Transform spawnTransform;
@@ -85,7 +87,10 @@ public class realtimeHelper : MonoBehaviour
         RequestOwnerShip(newPlayer);
 
         if (id == 0)
+        {
             AllRequestOwnerShip();
+        }
+            
     }
 
     private void RequestOwnerShip(GameObject o)

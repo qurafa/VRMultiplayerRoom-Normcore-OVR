@@ -10,6 +10,8 @@ TagManager:
   - l_slave
   - r_slave
   - Players
+  - Bottom
+  - Trigger
   layers:
   - Default
   - TransparentFX

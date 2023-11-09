@@ -13,17 +13,17 @@ using HandPhysicsToolkit.Modules.Avatar;
 
 public class networkObjectManager : MonoBehaviour
 {
-/*    public Camera[] localCameras;
+    /*    public Camera[] localCameras;
 
-    public AudioListener localAudioListener;
+        public AudioListener localAudioListener;
 
-    public OVRCameraRig localOVRCameraRig;
+        public OVRCameraRig localOVRCameraRig;
 
-    public OVRManager localOVRManager;
+        public OVRManager localOVRManager;
 
-    public OVRHeadsetEmulator localEmulator;*/
+        public OVRHeadsetEmulator localEmulator;*/
 
-    public GameObject[] Hands;
+    public GameObject[] Bones;
 
     //public GameObject[] setInactive;
 
@@ -31,6 +31,7 @@ public class networkObjectManager : MonoBehaviour
 
     private bool _Init = false;
 
+    private DataManager _dataManager;
     private void Update()
     {
         if (!_Init)
@@ -91,14 +92,18 @@ public class networkObjectManager : MonoBehaviour
         }
 
         //LOOP THROUGH HAND COMPONENTS AND READY OUR LOCAL HANDS
-        foreach (GameObject hand in Hands)
+        foreach (GameObject bone in Bones)
         {
             //Speak Geek Quest Hand
-            if (hand.GetComponentInChildren<handSyncImpl>())
+            if (bone.GetComponentInChildren<skeletonPoseImpl>())
             {
-                hand.GetComponentInChildren<handSyncImpl>().readyHand();
+                bone.GetComponentInChildren<skeletonPoseImpl>().ReadySkeleton();
+                
             }
         }
+        _dataManager = FindObjectOfType<DataManager>();
+        _dataManager.CreatePlayerFile(rtView.ownerIDInHierarchy);
+        //create file to store data on this participant
 
         _Init = true;
     }

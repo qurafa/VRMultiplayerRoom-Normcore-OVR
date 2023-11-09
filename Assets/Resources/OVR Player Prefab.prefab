@@ -634,13 +634,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0809671463344f4b8042887de670bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonType: 1
+  skeletonPart: 3
   _updateRootPose: 1
   _updateRootScale: 0
-  _mySkinMeshRenderer: {fileID: 876123519130887947}
-  _SGHandSync: {fileID: 5114562542615787790}
+  _myRenderer: {fileID: 876123519130887947}
+  skeletonPose: {fileID: 5114562542615787790}
   rtView: {fileID: 7993985180879331569}
-  handReady: 0
+  skeletonReady: 0
 --- !u!114 &5114562542615787790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b848fb75663c44aac62d1372cce1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handSyncImpl: {fileID: 6054403117335559093}
+  skeletonSync: {fileID: 6054403117335559093}
 --- !u!114 &2207885788067322715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,6 +1044,10 @@ MonoBehaviour:
     component: {fileID: 0}
   - componentID: 3
     component: {fileID: 7365917353566096578}
+  - componentID: 4
+    component: {fileID: 0}
+  - componentID: 5
+    component: {fileID: 0}
   _childViews:
   - componentID: 1
     component: {fileID: 0}
@@ -1079,7 +1083,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124234d3bcaea00478216d98baec3e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hands:
+  Bones:
+  - {fileID: 4391981612677960049}
   - {fileID: 3850480531458886447}
   - {fileID: 876123519130887945}
   rtView: {fileID: 7993985180879331569}
@@ -1252,13 +1257,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0809671463344f4b8042887de670bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonType: 0
+  skeletonPart: 2
   _updateRootPose: 1
   _updateRootScale: 0
-  _mySkinMeshRenderer: {fileID: 3850480531458886433}
-  _SGHandSync: {fileID: 1782123704593438776}
+  _myRenderer: {fileID: 3850480531458886433}
+  skeletonPose: {fileID: 1782123704593438776}
   rtView: {fileID: 7993985180879331569}
-  handReady: 0
+  skeletonReady: 0
 --- !u!114 &1782123704593438776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1271,7 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b848fb75663c44aac62d1372cce1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handSyncImpl: {fileID: 5707799653186260085}
+  skeletonSync: {fileID: 5707799653186260085}
 --- !u!114 &6976585668519228282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,6 +2036,8 @@ GameObject:
   - component: {fileID: 6698658468196880779}
   - component: {fileID: 3824770576722364639}
   - component: {fileID: 3976325235579712402}
+  - component: {fileID: 1846542173877974650}
+  - component: {fileID: 7230290101452183283}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -2078,6 +2085,8 @@ MonoBehaviour:
     component: {fileID: 6698658468196880779}
   - componentID: 2
     component: {fileID: 3824770576722364639}
+  - componentID: 3
+    component: {fileID: 7230290101452183283}
   _childViews: []
 --- !u!114 &6698658468196880779
 MonoBehaviour:
@@ -2122,6 +2131,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouth: {fileID: 6771860688251240390}
+--- !u!114 &1846542173877974650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4391981612677960049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0809671463344f4b8042887de670bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonPart: 1
+  _updateRootPose: 1
+  _updateRootScale: 0
+  _myRenderer: {fileID: 2160302209806614964}
+  skeletonPose: {fileID: 7230290101452183283}
+  rtView: {fileID: 7993985180879331569}
+  skeletonReady: 0
+--- !u!114 &7230290101452183283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4391981612677960049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b848fb75663c44aac62d1372cce1f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonSync: {fileID: 1846542173877974650}
 --- !u!1 &5519882810662550841
 GameObject:
   m_ObjectHideFlags: 0
