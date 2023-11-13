@@ -1107,6 +1107,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331290779}
   m_Mesh: {fileID: -5198267681279241171, guid: a764b9c583f97f842bfc000178329e85, type: 3}
+--- !u!1 &336460930 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6548039493830480803, guid: a6c3709bc80250e4782845c652700009, type: 3}
+  m_PrefabInstance: {fileID: 679887488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &336460931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336460930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555725d48e9051a4bb6b8d45178c2fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectionSurfaceType: 0
+  overlayType: 2
+  compositionDepth: 0
+  hidden: 0
+  overridePerLayerColorScaleAndOffset: 0
+  colorScale: {x: 1, y: 1, z: 1, w: 1}
+  colorOffset: {x: 0, y: 0, z: 0, w: 0}
+  colorMapEditorType_: 0
+  colorMapEditorGradient:
+    serializedVersion: 2
+    key0: {r: 0, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  colorMapEditorContrast: 0
+  colorMapEditorBrightness: 0
+  colorMapEditorPosterize: 0
+  colorMapEditorSaturation: 0
+  _colorLutSourceTexture: {fileID: 0}
+  _colorLutTargetTexture: {fileID: 0}
+  _lutWeight: 1
+  _flipLutY: 1
+  serializedSurfaceGeometry: []
+  textureOpacity_: 1
+  edgeRenderingEnabled_: 0
+  edgeColor_: {r: 1, g: 1, b: 1, a: 1}
+  colorMapType: 0
 --- !u!1 &340442332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,6 +1831,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 1
   _doneDebug: 0
+  _passthroughLayer: {fileID: 336460931}
   _canCalibrate: 1
   direction: 0
 --- !u!54 &506379712
@@ -3179,6 +3248,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6548039493819229767, guid: a6c3709bc80250e4782845c652700009, type: 3}
+      propertyPath: enableMixedReality
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548039493819229767, guid: a6c3709bc80250e4782845c652700009, type: 3}
+      propertyPath: _trackingOriginType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548039493819229767, guid: a6c3709bc80250e4782845c652700009, type: 3}
       propertyPath: isInsightPassthroughEnabled
       value: 1
       objectReference: {fileID: 0}
@@ -3188,6 +3265,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6548039493819229773, guid: a6c3709bc80250e4782845c652700009, type: 3}
       propertyPath: usePerEyeCameras
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548039493828477023, guid: a6c3709bc80250e4782845c652700009, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548039493828477023, guid: a6c3709bc80250e4782845c652700009, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548039493828477023, guid: a6c3709bc80250e4782845c652700009, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548039493828477023, guid: a6c3709bc80250e4782845c652700009, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548039493828477023, guid: a6c3709bc80250e4782845c652700009, type: 3}
+      propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6548039493830119299, guid: a6c3709bc80250e4782845c652700009, type: 3}
@@ -3249,7 +3346,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6548039493830081105, guid: a6c3709bc80250e4782845c652700009, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1921634954}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6548039493830480803, guid: a6c3709bc80250e4782845c652700009, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 336460931}
   m_SourcePrefab: {fileID: 100100000, guid: a6c3709bc80250e4782845c652700009, type: 3}
 --- !u!1 &679887489 stripped
 GameObject:

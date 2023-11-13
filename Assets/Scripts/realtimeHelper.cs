@@ -90,7 +90,6 @@ public class realtimeHelper : MonoBehaviour
         {
             AllRequestOwnerShip();
         }
-            
     }
 
     private void RequestOwnerShip(GameObject o)
@@ -175,7 +174,7 @@ public class realtimeHelper : MonoBehaviour
         spawnTransform = new GameObject().transform;
         spawnTransform.position = room.transform.position + transform.position;
         spawnTransform.eulerAngles = transform.eulerAngles;
-
+        spawnTransform.RotateAround(room.transform.position, Vector3.up, -transform.rotAbt.y);
         Debug.Log($"PlayerCenterReference {spawnTransform.transform.position.ToString()} Room {room.transform.position}");
 
         _Realtime.Connect(roomName);

@@ -26,15 +26,11 @@ public class TrackingTrigger : MonoBehaviour
     private float stopTrackCount = 0;
     private float stopTrackLimit = 3;
 
-    private string _statusWRTBox = "Outside Box";
-
     /// <summary>
-    /// status of the object wrt to the box.
-    /// 0 - outside box,
-    /// 1 - entering box,
-    /// 2 - inside box.
+    /// Status of the object with reference to the box.
+    /// Either "Outside Box" or "Inside Box" or "Entering {hole name}"
     /// </summary>
-    private float _boxState = 0;
+    private string _statusWRTBox = "Outside Box";
 
     private void Start()
     {

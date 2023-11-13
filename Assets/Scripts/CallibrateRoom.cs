@@ -58,6 +58,8 @@ public class CallibrateRoom : MonoBehaviour
     private MyLoadSceneEvent _doneEvent;
     [SerializeField]
     private bool _doneDebug;
+    [SerializeField]
+    private OVRPassthroughLayer _passthroughLayer;
 
     private Rigidbody _roomRB;
     private List<Transform> _listOfChildren = new List<Transform>();
@@ -71,6 +73,7 @@ public class CallibrateRoom : MonoBehaviour
         Standby,
         CalibratingPos,
         CalibratingRot,
+        Passthrough,
         Done
     }
     private Mode _mode;
@@ -109,24 +112,19 @@ public class CallibrateRoom : MonoBehaviour
         //only if we can can calibrate and are holding the controllers
         if (_canCalibrate && OVRInput.GetActiveController() != OVRInput.Controller.Hands)
         {
-            //if the A or X button is pressed
-            if (OVRInput.GetUp(OVRInput.Button.One) || OVRInput.GetUp(OVRInput.Button.Three))
+            //if the A button is pressed
+            if (OVRInput.GetUp(OVRInput.Button.One))
             {
-                Debug.Log("A or X was pressed");
+                Debug.Log("A was pressed");
 
                 switch (mode)
                 {
                     case Mode.Standby:
                         mode = Mode.CalibratingPos;
                         break;
-                    case Mode.CalibratingPos:
-                        mode = Mode.Standby;
-                        break;
-                    case Mode.CalibratingRot:
-                        mode = Mode.Standby;
-                        break;
                     default:
-                        Debug.Log("CalibrateRoom mode not set");
+                        Debug.Log($"Switch from {mode.ToString()} to standby");
+                        mode = Mode.Standby;
                         return;
                 }
             }
@@ -139,16 +137,23 @@ public class CallibrateRoom : MonoBehaviour
                         mode = Mode.CalibratingRot;
                         direction = (OVRInput.GetUp(OVRInput.Button.Two)) ? 1 : -1;
                         break;
-                    case Mode.CalibratingPos:
+                    default:
+                        Debug.Log($"Switch from {mode.ToString()} to standby");
                         mode = Mode.Standby;
-                        direction = 0;
-                        break;
-                    case Mode.CalibratingRot:
-                        mode = Mode.Standby;
-                        direction = 0;
+                        return;
+                }
+            }
+            //if the X button is pressed
+            if (OVRInput.GetUp(OVRInput.Button.Three))
+            {
+                switch (mode)
+                {
+                    case Mode.Standby:
+                        mode = Mode.Passthrough;
                         break;
                     default:
-                        Debug.Log("CalibrateRoom mode not set");
+                        Debug.Log($"Switch from {mode.ToString()} to standby");
+                        mode = Mode.Standby;
                         return;
                 }
             }
@@ -167,37 +172,43 @@ public class CallibrateRoom : MonoBehaviour
     {
         if (mode == Mode.Standby)
         {
+            //freeze everything, inlcuding position and rotation
+            //hide the passthrough layer
+            //stop all room rotations
             _roomRB.constraints = RigidbodyConstraints.FreezeAll;
-            //ToggleIgnores(true);
+            _passthroughLayer.hidden = true;
+            direction = 0;
         }
         else if (mode == Mode.CalibratingPos)
         {
-            //ToggleIgnores(false);
+            //only freeze the room rotating
             _roomRB.constraints = RigidbodyConstraints.FreezeRotation;
         }
         else if (mode == Mode.CalibratingRot)
         {
-            //ToggleIgnores(false);
+            //only freeze the x, y and z rotations
             _roomRB.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePosition;
-            //rotate so the forward is parallel to the rotation reference
+        }
+        else if(mode == Mode.Passthrough)
+        {
+            //show the passthrough layer
+            _passthroughLayer.hidden = false;
         }
         else if (mode == Mode.Done)
         {
-            Debug.Log("Done");
-            
-            Debug.Log($"PlayerCenterReference {_playerCenterReference.transform.position.ToString()} Room {_room.transform.position}");
-
+            //done, so send the player's information wrt to the room to the next scene
             _send = new MyTransform(_playerCenterReference.transform.position - _room.transform.position,
-            _playerCenterReference.transform.eulerAngles);
+            _playerCenterReference.transform.eulerAngles, _room.transform.eulerAngles);
 
             if(_doneEvent != null)
                 _doneEvent.Invoke(_send);
 
+            //stop ability to calibrate
             _canCalibrate = false;
         }
         else
         {
-            Debug.Log("CalibrateRoom mode not set");
+            Debug.Log("Error with ModeChanged(), mode not set properly");
         }
     }
 
