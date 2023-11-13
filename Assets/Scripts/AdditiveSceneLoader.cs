@@ -9,15 +9,9 @@ public class AdditiveSceneLoader : MonoBehaviour
     [SerializeField]
     private Realtime _realTime;
     [SerializeField]
-    private string _roomName;
-    [SerializeField]
-    private int sceneIndexToLoad;
-    [SerializeField]
     private int currentSceneIndex;
 
     private bool isLoading;
-
-    private MyTransform _playerTransform;
 
     private void Awake()
     {
@@ -25,40 +19,78 @@ public class AdditiveSceneLoader : MonoBehaviour
     }
 
     /// <summary>
-    /// Load the next scene plavinf the "player" in that transform
+    /// Load the next scene specified by "id"
     /// </summary>
     /// <param name="playerTransform"></param>
-    public void LoadScene(MyTransform playerTransform)
+    /// <param name="id"></param>
+    public void LoadScene(int id)
     {
-        if(isLoading) return;
+        if (isLoading) return;
+        if (currentSceneIndex == id) return;
 
         Debug.Log("Loading Scene....");
 
         isLoading = true;
-        _playerTransform = playerTransform;
-
-        StartCoroutine(LoadSceneAdditive());
+        StartCoroutine(LoadSceneAdditive(id));
     }
 
-    IEnumerator LoadSceneAdditive() {
-        _realTime.Disconnect();
-        var loadAsync = SceneManager.LoadSceneAsync(sceneIndexToLoad);
+    /// <summary>
+    /// Load the next scene placing the "player" with the given MyTransform information
+    /// </summary>
+    /// <param name="playerTransform"></param>
+    /// <param name="id"></param>
+    public void LoadScene(MyTransform playerTransform, int id)
+    {
+        if(isLoading) return;
+        if (currentSceneIndex == id) return;
 
-        while(!loadAsync.isDone) yield return null;
+        Debug.Log("Loading Scene....");
+
+        isLoading = true;
+        StartCoroutine(LoadSceneAdditive(playerTransform, id));
+    }
+
+    /// <summary>
+    /// Load the next scene with the given id only
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    IEnumerator LoadSceneAdditive(int id) {
+        //get the current Realtime in the scene and disconnect
+        _realTime = GetComponent<Realtime>();
+        _realTime?.Disconnect();
+        var loadAsync = SceneManager.LoadSceneAsync(id);
+
+        while(!loadAsync.isDone) yield return null;        
+
+        //set the new values when we're done loading the scene
+        currentSceneIndex = id;
+        isLoading = false;
+    }
+
+    /// <summary>
+    /// Load the next scene with the given id and player transform to set location
+    /// using the realtimeHelper
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    IEnumerator LoadSceneAdditive(MyTransform transform, int id)
+    {
+        //get the current Realtime in the scene and disconnect
+        _realTime = GetComponent<Realtime>();
+        _realTime?.Disconnect();
+        var loadAsync = SceneManager.LoadSceneAsync(id);
+
+        while (!loadAsync.isDone) yield return null;
 
         Debug.Log("getting realtime helper");
         realtimeHelper helper = FindObjectOfType<realtimeHelper>();
 
         if (helper) Debug.Log("Helper Name: " + helper.name);
-        helper.JoinRoom(_playerTransform);
+        helper.JoinMainRoom(transform);
 
-        /*_Realtime = FindObjectsOfType<Realtime>();
-
-        foreach(var rt in _Realtime)
-        {
-            if (!rt.connected)
-                rt.Connect(_roomName);
-        }*/
+        currentSceneIndex = id;
         isLoading = false;
     }
 }

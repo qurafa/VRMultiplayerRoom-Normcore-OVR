@@ -8,6 +8,7 @@ using System.Runtime.ConstrainedExecution;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class CallibrateRoom : MonoBehaviour
@@ -58,13 +59,25 @@ public class CallibrateRoom : MonoBehaviour
     private MyLoadSceneEvent _doneEvent;
     [SerializeField]
     private bool _doneDebug;
+    /// <summary>
+    /// Passthrough layer to toggle passthrough for the users at runtime
+    /// </summary>
     [SerializeField]
     private OVRPassthroughLayer _passthroughLayer;
 
     private Rigidbody _roomRB;
     private List<Transform> _listOfChildren = new List<Transform>();
+    /// <summary>
+    /// We turn this off when we're done calibrating
+    /// </summary>
     [SerializeField]
     private bool _canCalibrate = true;//we turn this off after we're done calibrating
+    /// <summary>
+    /// Toggles to provide visual feedback for the different modes, must include 4 for now.
+    /// 0 - Standby, 1 - Position, 2 - Rotation, 3 - Passthrough
+    /// </summary>
+    [SerializeField]
+    private Toggle[] toggles = new Toggle[4];
 
     private MyTransform _send;
 
@@ -91,6 +104,7 @@ public class CallibrateRoom : MonoBehaviour
             _mode = value;
 
             ModeChanged();
+            ToggleModeUI();
         }
     }
 
@@ -201,7 +215,7 @@ public class CallibrateRoom : MonoBehaviour
             _playerCenterReference.transform.eulerAngles, _room.transform.eulerAngles);
 
             if(_doneEvent != null)
-                _doneEvent.Invoke(_send);
+                _doneEvent.Invoke(_send, 1);
 
             //stop ability to calibrate
             _canCalibrate = false;
@@ -260,6 +274,15 @@ public class CallibrateRoom : MonoBehaviour
         }
     }
 
+    private void ToggleModeUI()
+    {
+        foreach (Toggle toggle in toggles)
+            toggle.isOn = false;
+
+        if ((int)mode < toggles.Length)
+            toggles[(int)mode].isOn = true;
+    }
+
     private void ToggleIgnores(bool val)
     {
         foreach (GameObject g in _ignores)
@@ -303,7 +326,7 @@ public class CallibrateRoom : MonoBehaviour
 }
 
 [System.Serializable]
-public class MyLoadSceneEvent : UnityEvent<MyTransform>
+public class MyLoadSceneEvent : UnityEvent<MyTransform, int>
 {
 }
 

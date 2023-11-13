@@ -39,6 +39,8 @@ public class realtimeHelper : MonoBehaviour
 
         _Realtime.didConnectToRoom += _Realtime_didConnectToRoom;
 
+        _Realtime.didDisconnectFromRoom += _Realtime_didDisconnectFromRoom;
+
         //Connect to Preset Code
         //_Realtime.Connect(roomName);
     }
@@ -92,6 +94,14 @@ public class realtimeHelper : MonoBehaviour
         }
     }
 
+    private void _Realtime_didDisconnectFromRoom(Realtime realtime)
+    {
+        AdditiveSceneLoader aSL = GetComponent<AdditiveSceneLoader>();
+
+        //take us back the lobby when we disconnect
+        aSL?.LoadScene(0);
+    }
+
     private void RequestOwnerShip(GameObject o)
     {
         if(o.TryGetComponent<RealtimeView>(out RealtimeView rtView))
@@ -140,14 +150,14 @@ public class realtimeHelper : MonoBehaviour
         return finalString;
     }
 
-    public void JoinRoomByOffset(Transform offset)
+    public void JoinMainRoomByOffset(Transform offset)
     {
         spawnTransform = new GameObject().transform;
 
         _Realtime.Connect(roomName);
     }
     
-    public void JoinRoomByOffset(MyTransform offset)
+    public void JoinMainRoomByOffset(MyTransform offset)
     {
         spawnTransform = new GameObject().transform;
 
@@ -164,12 +174,12 @@ public class realtimeHelper : MonoBehaviour
         _Realtime.Connect(roomName);
     }
 
-    public void JoinRoom(Transform transform)
+    public void JoinMainRoom(Transform transform)
     {
         spawnTransform = transform;
         _Realtime.Connect(roomName);
     }
-    public void JoinRoom(MyTransform transform)
+    public void JoinMainRoom(MyTransform transform)
     {
         spawnTransform = new GameObject().transform;
         spawnTransform.position = room.transform.position + transform.position;
@@ -180,13 +190,25 @@ public class realtimeHelper : MonoBehaviour
         _Realtime.Connect(roomName);
     }
     
-    public void JoinRoom(Vector3 pos, Quaternion rot)
+    public void JoinMainRoom(Vector3 pos, Quaternion rot)
     {
         spawnTransform = new GameObject().transform;
         //spawnTransform = transform;
         spawnTransform.SetPositionAndRotation(pos, rot);
         spawnTransform.localScale = Vector3.one;
 
-        JoinRoom(spawnTransform);
+        JoinMainRoom(spawnTransform);
+    }
+
+    public void JoinLobby()
+    {
+
+    }
+
+    private void OnDisable()
+    {
+        _Realtime.didConnectToRoom -= _Realtime_didConnectToRoom;
+
+        _Realtime.didDisconnectFromRoom -= _Realtime_didDisconnectFromRoom;
     }
 }
