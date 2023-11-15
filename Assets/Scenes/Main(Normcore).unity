@@ -269,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717420806968849343, guid: 4c18287bc2573ff429b93c7ec24f3492, type: 3}
       propertyPath: _maintainOwnershipWhileSleeping
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1790083688002100171, guid: 4c18287bc2573ff429b93c7ec24f3492, type: 3}
       propertyPath: _realtime
@@ -431,6 +431,10 @@ PrefabInstance:
       propertyPath: ignoreCollisionsOnStart
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4581444517608758399, guid: 4c18287bc2573ff429b93c7ec24f3492, type: 3}
+      propertyPath: _maintainOwnershipWhileSleeping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4582220145926459307, guid: 4c18287bc2573ff429b93c7ec24f3492, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -473,7 +477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4960095969341219549, guid: 4c18287bc2573ff429b93c7ec24f3492, type: 3}
       propertyPath: _maintainOwnershipWhileSleeping
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5162122194725204926, guid: 4c18287bc2573ff429b93c7ec24f3492, type: 3}
       propertyPath: m_IsActive

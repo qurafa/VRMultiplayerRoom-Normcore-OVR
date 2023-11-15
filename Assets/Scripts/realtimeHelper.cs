@@ -118,18 +118,16 @@ public class realtimeHelper : MonoBehaviour
 
     private void AllRequestOwnerShip()
     {
-        var rViews = FindObjectsByType<RealtimeView>(FindObjectsSortMode.None);
-        var rTransforms = FindObjectsByType<RealtimeTransform>(FindObjectsSortMode.None);
+        var rViews = FindObjectsOfType<RealtimeView>();//GetComponents<RealtimeView>();//FindObjectsByType<RealtimeView>(FindObjectsSortMode.InstanceID);
+        var rTransforms = FindObjectsOfType<RealtimeTransform>();//GetComponents<RealtimeTransform>();//FindObjectsByType<RealtimeTransform>(FindObjectsSortMode.InstanceID);
 
         foreach (RealtimeView v in rViews)
         {
-            if(v.isUnownedSelf)
-                v.RequestOwnership();
+            v.RequestOwnership();
         }
         foreach(RealtimeTransform t in rTransforms)
         {
-            if (t.isUnownedSelf)
-                t.RequestOwnership();
+            t.RequestOwnership();
         }
     }
 
