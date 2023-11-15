@@ -94,6 +94,7 @@ public class CallibrateRoom : MonoBehaviour
     [SerializeField]
     private float direction = 0.0f;
     public readonly float rotFactor = 0.05f;
+    public readonly float posFactor = 0.025f;
 
     [SerializeField]
     Mode mode
@@ -175,6 +176,13 @@ public class CallibrateRoom : MonoBehaviour
             if (OVRInput.GetUp(OVRInput.Button.Start) || _doneDebug)
             {
                 mode = Mode.Done;
+            }
+
+            if (mode == Mode.CalibratingPos)
+            {
+                Vector2 rAxes = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
+                Vector2 lAxes = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
+                _roomRB.transform.Translate(new Vector3(rAxes.x, lAxes.y, rAxes.y) * posFactor);
             }
 
             if (mode == Mode.CalibratingRot)

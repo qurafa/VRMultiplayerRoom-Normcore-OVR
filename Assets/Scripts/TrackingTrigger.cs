@@ -81,7 +81,7 @@ public class TrackingTrigger : MonoBehaviour
 
         if (collision.collider.CompareTag("GrabCol"))
         {
-            colliders?.Add(collision.gameObject);
+            colliders?.Add(collision.collider.gameObject);
             releaseCount = 0;
         }
         if(collision.collider.CompareTag("Bottom"))
@@ -105,10 +105,12 @@ public class TrackingTrigger : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        colliders?.Remove(collision.collider.gameObject);
-        if (colliders.Count <= 0 && touchingCount >= touchingLimit)
-            touchingCount = 0;
-
+        if (collision.collider.CompareTag("GrabCol"))
+        {
+            colliders?.Remove(collision.collider.gameObject);
+            if (colliders.Count <= 0)
+                touchingCount = 0;
+        }
         if (collision.collider.CompareTag("Bottom"))
         {
             stopTracking = false;
