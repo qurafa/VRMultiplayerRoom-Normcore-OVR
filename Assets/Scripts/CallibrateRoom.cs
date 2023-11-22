@@ -28,6 +28,8 @@ public class CallibrateRoom : MonoBehaviour
     /// </summary>
     [SerializeField]
     private GameObject _playerCenterReference;
+    [SerializeField]
+    private GameObject _player;
     /// <summary>
     /// Objects to be ignored when callibrating the room
     /// Added so things like object collision does not affect
@@ -182,7 +184,7 @@ public class CallibrateRoom : MonoBehaviour
             {
                 Vector2 rAxes = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
                 Vector2 lAxes = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
-                _roomRB.transform.Translate(new Vector3(rAxes.x, lAxes.y, rAxes.y) * posFactor);
+                _room.transform.Translate(new Vector3(-rAxes.x, -lAxes.y, -rAxes.y) * posFactor, _rotationReference.transform);
             }
 
             if (mode == Mode.CalibratingRot)
