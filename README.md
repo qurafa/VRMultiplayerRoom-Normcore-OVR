@@ -5,6 +5,8 @@ and integrating [HPTK](https://github.com/jorgejgnz/HPTK) for more natural grab 
 
 You may view the latest demo here: https://youtu.be/I8S_UmN1R5s
 
-Previous demos: https://youtu.be/PnbDo-psgoE
+Previous demos:
+
+https://youtu.be/PnbDo-psgoE
 
 ![image](https://github.com/qurafa/VRMultiplayerRoom-Normcore-OVR/assets/57468292/d47f0637-684f-464b-8bc9-aa30491d2e2f)
