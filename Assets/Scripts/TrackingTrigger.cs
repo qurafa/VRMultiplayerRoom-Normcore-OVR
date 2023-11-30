@@ -1,5 +1,6 @@
 using Meta.WitAi.Utilities;
 using Normal.Realtime;
+using Oculus.Interaction;
 using OVRTouchSample;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ public class TrackingTrigger : MonoBehaviour
     private HashSet<GameObject> colliders;
 
     private bool stopTracking = false;
-    private readonly float touchingLimit = 3;
+    private readonly float touchingLimit = 1.5f;
     private float touchingCount = 0;
     private float releaseLimit = 3;
     private float releaseCount = 0;
@@ -77,17 +78,14 @@ public class TrackingTrigger : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($".....................{collision.collider.tag}");
+        Debug.Log($".....................Tag entered: {collision.collider.tag}, Object Entered: {collision.collider.name}");
 
         if (collision.collider.CompareTag("GrabCol"))
         {
             colliders?.Add(collision.collider.gameObject);
             releaseCount = 0;
         }
-        if(collision.collider.CompareTag("Bottom"))
-        {
-            stopTracking = true;
-        }
+
     }
 
     private void OnCollisionStay(Collision collision)
@@ -96,10 +94,6 @@ public class TrackingTrigger : MonoBehaviour
         {
             if(!colliders.Contains(collision.collider.gameObject))
                 colliders?.Add(collision.collider.gameObject);
-        }
-        if (collision.collider.CompareTag("Bottom"))
-        {
-            stopTracking = true;
         }
     }
 
@@ -111,11 +105,6 @@ public class TrackingTrigger : MonoBehaviour
             if (colliders.Count <= 0)
                 touchingCount = 0;
         }
-        if (collision.collider.CompareTag("Bottom"))
-        {
-            stopTracking = false;
-            stopTrackCount = 0;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -124,6 +113,10 @@ public class TrackingTrigger : MonoBehaviour
         {
             if (other.name.Equals("Box")) _statusWRTBox = "Inside Box";
             else _statusWRTBox = $"Entering {other.name}";
+        }
+        if (other.CompareTag("Bottom"))
+        {
+            stopTracking = true;
         }
     }
 
@@ -134,6 +127,10 @@ public class TrackingTrigger : MonoBehaviour
             if (other.name.Equals("Box")) _statusWRTBox = "Inside Box";
             else _statusWRTBox = $"Entering {other.name}";
         }
+        if (other.CompareTag("Bottom"))
+        {
+            stopTracking = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -141,6 +138,11 @@ public class TrackingTrigger : MonoBehaviour
         if (other.CompareTag("Trigger"))
         {
             _statusWRTBox = "Outside Box";
+        }
+        if (other.CompareTag("Bottom"))
+        {
+            stopTracking = false;
+            stopTrackCount = 0;
         }
     }
 }

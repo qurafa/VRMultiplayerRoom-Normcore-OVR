@@ -76,19 +76,32 @@ public class CallibrateRoom : MonoBehaviour
     private bool _canCalibrate = true;//we turn this off after we're done calibrating
     /// <summary>
     /// Toggles to provide visual feedback for the different modes, must include 4 for now.
-    /// 0 - Standby, 1 - Position, 2 - Rotation, 3 - Passthrough
+    /// 0 - Standby, 1 - Position, 2 - Rotation
     /// </summary>
     [SerializeField]
-    private Toggle[] toggles = new Toggle[4];
+    private Toggle[] toggles = new Toggle[3];
+    /// <summary>
+    /// Passthrough toggle to provide visual feedback
+    /// </summary>
+    [SerializeField]
+    private Toggle passThroughToggle;
+    [SerializeField]
+    private Material[] _seeThroughInPassThroughMaterials = new Material[0];
 
     private MyTransform _send;
+    GameObject _rotRef;
+    enum Vision
+    {
+        Normal,
+        Passthrough
+    }
+    private Vision _vision;
 
     enum Mode
     {
         Standby,
         CalibratingPos,
         CalibratingRot,
-        Passthrough,
         Done
     }
     private Mode _mode;
@@ -111,6 +124,17 @@ public class CallibrateRoom : MonoBehaviour
         }
     }
 
+    Vision vision
+    {
+        get { return _vision; }
+        set
+        {
+            _vision = value;
+
+            VisionChanged();
+        }
+    }
+
     void Start()
     {
         if (!_rotationReference)
@@ -121,6 +145,7 @@ public class CallibrateRoom : MonoBehaviour
 
         //saving the starting transform
         _send = new MyTransform(transform.position, transform.eulerAngles);
+        _rotRef = Instantiate(new GameObject("_rotRef"), _rotationReference.transform);
     }
 
     // Update is called once per frame
@@ -160,17 +185,19 @@ public class CallibrateRoom : MonoBehaviour
                         return;
                 }
             }
-            //if the X button is pressed
+            //if the X button is pressed switch vision
             if (OVRInput.GetUp(OVRInput.Button.Three))
             {
-                switch (mode)
+                switch (vision)
                 {
-                    case Mode.Standby:
-                        mode = Mode.Passthrough;
+                    case Vision.Normal:
+                        vision = Vision.Passthrough;
+                        break;
+                    case Vision.Passthrough:
+                        vision = Vision.Normal;
                         break;
                     default:
-                        Debug.Log($"Switch from {mode.ToString()} to standby");
-                        mode = Mode.Standby;
+                        vision = Vision.Normal;
                         return;
                 }
             }
@@ -184,7 +211,8 @@ public class CallibrateRoom : MonoBehaviour
             {
                 Vector2 rAxes = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
                 Vector2 lAxes = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
-                _room.transform.Translate(new Vector3(-rAxes.x, -lAxes.y, -rAxes.y) * posFactor, _rotationReference.transform);
+                _rotRef.transform.eulerAngles = new Vector3(0 ,_rotationReference.transform.eulerAngles.y, 0);  
+                _room.transform.Translate(new Vector3(rAxes.x, lAxes.y, rAxes.y) * posFactor, _rotRef.transform);
             }
 
             if (mode == Mode.CalibratingRot)
@@ -199,9 +227,11 @@ public class CallibrateRoom : MonoBehaviour
             //freeze everything, inlcuding position and rotation
             //hide the passthrough layer
             //stop all room rotations
+            //set the material colors right
             _roomRB.constraints = RigidbodyConstraints.FreezeAll;
-            _passthroughLayer.hidden = true;
             direction = 0;
+
+
         }
         else if (mode == Mode.CalibratingPos)
         {
@@ -213,16 +243,13 @@ public class CallibrateRoom : MonoBehaviour
             //only freeze the x, y and z rotations
             _roomRB.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePosition;
         }
-        else if(mode == Mode.Passthrough)
-        {
-            //show the passthrough layer
-            _passthroughLayer.hidden = false;
-        }
         else if (mode == Mode.Done)
         {
             //done, so send the player's information wrt to the room to the next scene
             _send = new MyTransform(_playerCenterReference.transform.position - _room.transform.position,
             _playerCenterReference.transform.eulerAngles, _room.transform.eulerAngles);
+
+            vision = Vision.Normal;
 
             if(_doneEvent != null)
                 _doneEvent.Invoke(_send, 1);
@@ -233,6 +260,39 @@ public class CallibrateRoom : MonoBehaviour
         else
         {
             Debug.Log("Error with ModeChanged(), mode not set properly");
+        }
+    }
+
+    private void VisionChanged()
+    {
+        if(vision == Vision.Normal)
+        {
+            _passthroughLayer.hidden = true;
+
+            foreach (Material m in _seeThroughInPassThroughMaterials)
+            {
+                Color c = m.color;
+                c.a = 1;
+                m.color = c;
+            }
+            passThroughToggle.isOn = false;
+        }
+        else if(vision == Vision.Passthrough)
+        {
+            //show the passthrough layer
+            _passthroughLayer.hidden = false;
+
+            foreach (Material m in _seeThroughInPassThroughMaterials)
+            {
+                Color c = m.color;
+                c.a = 0;
+                m.color = c;
+            }
+            passThroughToggle.isOn = true;
+        }
+        else
+        {
+            Debug.Log("Problem with setting up vision change");
         }
     }
 
