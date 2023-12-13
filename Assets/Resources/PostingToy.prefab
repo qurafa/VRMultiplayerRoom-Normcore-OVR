@@ -3262,6 +3262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 1524536979991967920}
+  _audioSource: {fileID: 0}
   tracking: 1
 --- !u!114 &1524536979991967920
 MonoBehaviour:
@@ -5845,6 +5846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 1971690187655716468}
+  _audioSource: {fileID: 0}
   tracking: 1
 --- !u!114 &1971690187655716468
 MonoBehaviour:

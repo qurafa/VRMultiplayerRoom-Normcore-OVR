@@ -10,7 +10,8 @@ public class TrackingTrigger : MonoBehaviour
 {
     [SerializeField]
     private ObjectModelImpl obj;
-
+    [SerializeField]
+    AudioSource _audioSource;
     /// <summary>
     /// Whether to track this object or not
     /// </summary>
@@ -33,8 +34,11 @@ public class TrackingTrigger : MonoBehaviour
     /// </summary>
     private string _statusWRTBox = "Outside Box";
 
+    private Rigidbody _rigidbody;
+
     private void Start()
     {
+        _rigidbody = GetComponent<Rigidbody>();
         colliders = new HashSet<GameObject>();
         obj.UpdateTS(0);//set to idle tracking state
     }
@@ -84,6 +88,7 @@ public class TrackingTrigger : MonoBehaviour
         {
             colliders?.Add(collision.collider.gameObject);
             releaseCount = 0;
+            _rigidbody.useGravity = false;
         }
 
     }
@@ -92,8 +97,11 @@ public class TrackingTrigger : MonoBehaviour
     {
         if (collision.collider.CompareTag("GrabCol"))
         {
-            if(!colliders.Contains(collision.collider.gameObject))
+            if (!colliders.Contains(collision.collider.gameObject))
+            {
                 colliders?.Add(collision.collider.gameObject);
+                _rigidbody.useGravity = false;
+            }
         }
     }
 
@@ -103,7 +111,10 @@ public class TrackingTrigger : MonoBehaviour
         {
             colliders?.Remove(collision.collider.gameObject);
             if (colliders.Count <= 0)
+            {
                 touchingCount = 0;
+                _rigidbody.useGravity = true;
+            }
         }
     }
 
